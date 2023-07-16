@@ -1,0 +1,455 @@
+<!-- <div *ngFor="let section of sections; let i = index" class="section">
+  <div class="section-content" [class.flip]="section.flipped">
+    <div class="container vh-100">
+      <div class="container-fluid h-custom">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-md-9 col-lg-6 col-xl-5">
+            <p class="title">Welcome To kafiil</p>
+            <p class="info-contact">Get Your Business Done Online By The Best Professional Freelancers Easily And Safely For All Parties</p>
+            <div class="btns">
+              <a href="https://kafiil.com/user/register" class="explore">Register Now</a>
+              <button class="video-button play-related-video watch" src="https://www.youtube.com/embed/U-3knuWDrXk">
+                <i class="fas fa-play-circle"></i>
+                <span>Watch Video</span>
+              </button>
+            </div>
+          </div>
+          <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+            <img class="w-100" src="assets/images/home.svg" alt="welcome">
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <button (click)="toggleFlip(section)">Flip</button>
+  </div>
+</div> -->
+
+  <section class="home-slider">
+    <div class="container ">
+    <div class="swiper-container">
+     
+        <div class="swiper-slide" *ngFor="let section of sections; let i = index;" >
+          <div class="container" [class.active]="i === currentSectionIndex">
+            <div class="row align-items-center">
+              <ng-container *ngIf="i === currentSectionIndex">
+                <div class="col-12 col-lg-5">
+                  <p class="title">{{ section.title }}</p>
+                  <p class="info-contact">{{ section.description }}</p>
+                  <div class="btns">
+                    <a href="http://localhost:4200/project" class="explore">Explore Projects</a>
+                    <button class="video-button play-related-video watch" >
+                      <i class="fas fa-play-circle"></i>
+                      <span>Watch Video</span>
+                    </button>
+                  </div>
+                </div>
+                <div class="col-12 col-lg-7">
+                  <img src="{{ section.image }}" alt="" class="w-100">
+                </div>
+
+            <div>
+   <i class="fas fa-chevron-left next" (click)="toggleSection('prev')"></i>
+     
+<div class="owl-dots" (click)="toggleSection('next')" >
+  <div class="owl-dot"><span></span></div>
+  <div class="owl-dot"><span></span></div>
+  <div class="owl-dot active"><span></span></div>
+  <div class="owl-dot"><span></span></div>
+</div>
+ <i class="fas fa-chevron-right prev" (click)="toggleSection('next')"></i>
+
+            </div>
+              </ng-container>
+            </div>
+          </div>
+       
+       
+      </div>
+      </div>
+    </div>
+  </section>
+  
+
+<section class="section2">
+     <div class="container ">
+  <div class="container">
+    <h2 class="sec-center-title">
+      <i class="fas fa-briefcase"></i>
+      How It Works?
+    </h2>
+  </div>
+  <div class="text-center row">
+    <ul class="nav normal-tabs">
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="currentTab === 0" (click)="toggleTab(0)">
+          Services
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="currentTab === 1" (click)="toggleTab(1)">
+          Projects
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="currentTab === 2" (click)="toggleTab(2)">
+          Contests
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="tab-content about-tabs">
+    <div class="tab-pane fade " id="about_target1" [class.show]="currentTab === 0" [class.active]="currentTab === 0">
+      <button class="video-icon play-related-video" src="https://www.youtube.com/embed/k1kTyICn6Ew">
+        <i class="fas fa-play-circle"></i>
+      </button>
+      <div class="services-row">
+        <div class="service-show" *ngFor="let service of services[0]; let i = index">
+           <span class="service-number">{{ i + 1 }}
+
+            
+           </span>
+          <img [src]="service.image" alt="" class="img">
+         
+          <div class="down">
+            <p class="title">{{ service.title }}
+            </p>
+            <p class="info-content desc-font">{{ service.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane fade " id="about_target2" [class.show]="currentTab === 1" [class.active]="currentTab === 1">
+      <button class="video-icon play-related-video" src="https://www.youtube.com/embed/qb6Uz8HEDek">
+        <i class="fas fa-play-circle"></i>
+      </button>
+     
+      <div class="services-row">
+        
+        <div class="service-show" *ngFor="let project of services[1]; let i = index">
+            <span class="service-number">{{ i + 1 }}</span>
+            <img [src]="project.image" alt="" class="img">
+        
+          <div class="down">
+            <p class="title">{{ project.title }}</p>
+            <p class="info-content desc-font">{{ project.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+     
+    <div class="tab-pane fade " id="about_target3" [class.show]="currentTab === 2" [class.active]="currentTab === 2">
+      <button class="video-icon play-related-video" src="https://www.youtube.com/embed/g6gyZC2O4W4">
+        <i class="fas fa-play-circle"></i>
+      </button>
+      <div class="services-row">
+        <div class="service-show" *ngFor="let contest of services[2]; let i = index">
+          <span class="service-number">{{ i + 1 }}</span>
+                    <img [src]="contest.image" alt="" class="img">
+          
+          <div class="down">
+            <p class="title">{{ contest.title}}</p>
+            <p class="info-content desc-font">{{ contest.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<!-- section 3 -->
+<section class="section3">
+<div class="container">
+<div >
+  <h2 class="sec-center-title">
+<i class="far fa-question-circle"></i>
+Why Kafiil </h2>
+<p class="sec-center-p">
+  Kafiils works to provide a professional and safe environment for interaction between entrepreneurs and freelancers through</p>
+</div>
+<div class="row">
+  <div class="col-lg-6 ">
+    <p class="feature-title"> Business Owner</p>
+<ul class="features-list">
+<li>Full guarantee of your rights and outstanding technical support at your service</li>
+<li>No additional fees, just pay for your purchases</li>
+<li>Enjoy the contests department, the exclusive department in the arab world</li>
+<li>Various, secure and flexible payment methods suitable for all countries</li>
+</ul>
+  </div>
+    <div class="col-lg-6 ">
+      <img src="assets/images/freelanc.svg" alt="" class="w-100">
+  </div>
+
+</div>
+
+
+</div>
+
+<div class="container">
+
+<div class="row">
+      <div class="col-lg-6 ">
+      <img src="assets/images/why.svg" alt="" class="w-100">
+  </div>
+  <div class="col-lg-6 ">
+    <p class="feature-title">The Freelancer</p>
+<ul class="features-list">
+<li>Full guarantee of your rights and outstanding technical support at your service</li>
+<li>Profits suspension period may be up to two days only</li>
+<li>Kafiil platform commission may be up to 10% only</li>
+<li>Various and easy profit withdrawal methods (paypal / vodafone cash / bank transfer / and many other means)</li>
+</ul>
+  </div>
+
+
+</div>
+
+
+</div>
+
+</section>
+
+<!-- section 4 -->
+<section class="section4">
+<div class="container">
+<div >
+  <h2 class="sec-center-title">
+<i class="fas fa-th-large"></i>
+Our Departments </h2>
+<p class="sec-center-p">
+Kafiil has many different departments (contests / mini-services / projects) that meet your different needs to develop your business</p>
+</div>
+
+
+ <div class="text-center row">
+    <ul class="nav normal-tabs">
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="CurrentDep === 0" (click)="toggleDep(0)">
+          Services
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="CurrentDep === 1" (click)="toggleDep(1)">
+          Projects
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="CurrentDep === 2" (click)="toggleDep(2)">
+          Contests
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+<!-- content of departement  -->
+<div class="tab-content">
+   <div class="tab-pane fade " id="hi" [class.show]="CurrentDep === 0" [class.active]="CurrentDep === 0">
+<div class="categories-grid">
+<a href="https://kafiil.com/services/business" class="category-box">
+        <i class="fas fa-business-time"></i>
+        <span class="title">
+        Business </span>
+        </a>
+        <a href="https://kafiil.com/services/software" class="category-box">
+        <i class="fas fa-code"></i>
+        <span class="title">
+        Software </span>
+        </a>
+        <a href="https://kafiil.com/services/marketing" class="category-box">
+        <i class="fas fa-bullhorn"></i>
+        <span class="title">
+        Marketing </span>
+        </a>
+        <a href="https://kafiil.com/services/design" class="category-box">
+        <i class="fas fa-paint-brush"></i>
+        <span class="title">
+        Design </span>
+        </a>
+        <a href="https://kafiil.com/services/video" class="category-box">
+        <i class="fas fa-video"></i>
+        <span class="title">
+        Video </span>
+        </a>
+        <a href="https://kafiil.com/services/audio" class="category-box">
+        <i class="fas fa-microphone-alt"></i>
+        <span class="title">
+        Audio </span>
+        </a>
+        <a href="https://kafiil.com/services/writing-and-translation" class="category-box">
+        <i class="fas fa-language"></i>
+        <span class="title">
+        Writing And Translation </span>
+        </a>
+        <a href="https://kafiil.com/services/education-and-consulting" class="category-box">
+        <i class="fas fa-chalkboard-teacher"></i>
+        <span class="title">
+        Education And Consulting </span>
+        </a>
+        <a href="https://kafiil.com/services/financial-services-1" class="category-box">
+        <i class="fas fa-money-check-alt"></i>
+        <span class="title">
+        Financial Services </span>
+        </a>
+        <a href="https://kafiil.com/services/other-services" class="category-box">
+        <i class="fas fa-bars"></i>
+        <span class="title">
+        Other Services </span>
+        </a>
+        </div>
+</div>
+   <div class="tab-pane fade " id="hello"   [class.show]="CurrentDep === 1" [class.active]="CurrentDep === 1">
+  
+
+
+          <div class="categories-grid">
+      <a href="https://kafiil.com/projects/business-consulting-and-management-services-2" class="category-box">
+      <i class="fas fa-suitcase"></i>
+      <span class="title">
+      Business, Consulting And Management Services </span>
+      </a>
+      <a href="https://kafiil.com/projects/programming-web-and-application-development-2" class="category-box">
+      <i class="fas fa-code"></i>
+      <span class="title">
+      Programming, Web And Application Development </span>
+      </a>
+      <a href="https://kafiil.com/projects/design-video-and-audio-1" class="category-box">
+      <i class="fas fa-photo-video"></i>
+      <span class="title">
+      Design, Video And Audio </span>
+      </a>
+      <a href="https://kafiil.com/projects/marketing-and-sales-2" class="category-box">
+      <i class="fas fa-bullhorn"></i>
+      <span class="title">
+      Marketing And Sales </span>
+      </a>
+      <a href="https://kafiil.com/projects/writing-content-creation-translation-and-languag-2" class="category-box">
+      <i class="fas fa-newspaper"></i>
+      <span class="title">
+      Writing, Content Creation, Translation And Languages </span>
+      </a>
+      <a href="https://kafiil.com/projects/training-education-and-remote-assistance-2" class="category-box">
+      <i class="fas fa-chalkboard-teacher"></i>
+      <span class="title">
+      Training, Education And Remote Assistance </span>
+      </a>
+      <a href="https://kafiil.com/projects/other-things-2" class="category-box">
+      <i class="fas fa-bars"></i>
+      <span class="title">
+      Other Things </span>
+      </a>
+      </div>
+</div>
+   <div class="tab-pane fade " id="welcome" [class.show]="CurrentDep === 2" [class.active]="CurrentDep === 2">
+  
+
+                <div class="categories-grid">
+        <a href="https://kafiil.com/contests/design-1" class="category-box">
+        <i class="fas fa-paint-brush"></i>
+        <span class="title">
+        Design </span>
+        </a>
+        <a href="https://kafiil.com/contests/video-1" class="category-box">
+        <i class="fas fa-video"></i>
+        <span class="title">
+        Video </span>
+        </a>
+        <a href="https://kafiil.com/contests/business-1" class="category-box">
+        <i class="fas fa-business-time"></i>
+        <span class="title">
+        Business </span>
+        </a>
+        <a href="https://kafiil.com/contests/choosing-names" class="category-box">
+        <i class="fas fa-globe"></i>
+        <span class="title">
+        Choosing Names </span>
+        </a>
+        <a href="https://kafiil.com/contests/writing-and-translation-1" class="category-box">
+        <i class="fas fa-language"></i>
+        <span class="title">
+        Writing And Translation </span>
+        </a>
+        <a href="https://kafiil.com/contests/other-16" class="category-box">
+        <i class="fas fa-bars"></i>
+        <span class="title">
+        Other </span>
+        </a>
+        </div>
+</div>
+
+</div>
+
+
+</div>
+
+
+</section>
+
+<!-- section 5 -->
+<section class="section5">
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6">
+
+<h2 class="title5">
+Register With Us In Kafiil </h2>
+<p class="desc desc-font">
+Enjoy the various kafiil departments (contests / projects / services) that provide you with all your needs to grow your business with a selection of the best freelancers nominated by kafiil </p>
+   <a href="http://localhost:4200/home" class="theme-btn primary-btn">
+Register Now </a>
+
+
+</div> 
+
+
+
+    <div class="col-lg-6">
+      <img src="assets/images/section5.svg" alt="" class="w-100">
+
+
+    </div> 
+
+
+
+</div>
+  </div>
+
+
+</section>
+
+
+
+<!--just test-->
+<!-- 
+    <div class="container">
+<section class="vh-100 " *ngFor="let section of sections; let i = index;">
+    <div class="container-fluid h-custom" >
+        <div class="row d-flex justify-content-center align-items-center h-100" [class.active]="i === currentSectionIndex">
+            <div class="col-md-9 col-lg-6 col-xl-5 ">
+                  <p class="title">{{ section.title }}</p>
+                  <p class="info-content">{{ section.description }}</p>
+ 
+<div class="btns">
+<a href="https://kafiil.com/user/register" class=" explore">
+Register Now </a>
+<button class="video-button play-related-video watch"  (click)="toggleSection()">
+<i class="fas fa-play-circle"></i>
+<span>Watch Video</span>
+</button>
+</div>
+              
+            </div>
+            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+                <img class="w-100" src="assets/images/home.svg" alt="welcome">
+
+            </div>
+        </div>
+    </div>
+  
+</section>
+</div>
+
+    -->

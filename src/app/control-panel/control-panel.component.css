@@ -1,0 +1,333 @@
+.section1{
+    padding: 10px;
+    margin-top: 50px;
+}
+
+.box-head{
+    padding: 20px 20px;
+    color: #707070;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+
+        border-bottom: 1px solid rgba(212,212,212,.55);
+}
+
+ .title {
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    color: #444152;
+
+    font-size: 1em;
+}
+ .title i{
+      margin-right:5px;
+}
+
+.theme-btn.primary-btn {
+    color: #fff;
+    background-color: #1dbf73;
+    text-decoration: none!important;
+    padding: 8px;
+    border-radius: 8px;
+}
+/*balance */
+.balance{
+    text-align: center;
+
+    
+border-right: 1px solid rgba(212, 212, 212, .55);
+    border-radius: 8px;
+    padding-top: 20px;
+        padding-bottom: 10px;
+
+}
+.balance a{
+        text-decoration: none!important;
+  
+            
+
+}
+.balance .title{
+
+    text-decoration: none!important;
+    font-size: 23px;
+    color:#777;
+    justify-content: center;
+        text-align: center;
+
+    margin-bottom: 10px;
+}
+.balance .val {
+    font-size: 40px;
+    color: #707070;
+}
+/*balance green*/
+.balance-green{
+    text-align: center;
+
+
+border-right: 1px solid rgba(212, 212, 212, .55);
+    border-radius: 8px;
+        padding-top: 20px;
+            padding-bottom: 10px;
+
+
+}
+.balance-green a{
+        text-decoration: none!important;
+            
+
+}
+.balance-green .title{
+
+    text-decoration: none!important;
+    font-size: 23px;
+    color:#1dbf73;
+    justify-content: center;
+        text-align: center;
+
+    margin-bottom: 10px;
+}
+.balance-green .val {
+    font-size: 40px;
+    color: #1dbf73;;
+}
+/*padding of the second section*/
+.has-padding{
+    background-color: #fff;
+    border-radius: 8px;
+        margin-bottom: 20px;
+}
+/*my project*/
+.block {
+    background-color: #fff;
+    border-radius: 8px;
+    border: 1px solid #dee0e1;
+
+}
+ .block .block-head {
+    padding: 10px 20px;
+    min-height: 57px;
+    font-size: 16px;
+    color: #707070;
+    border-bottom: 1px solid rgba(212, 212, 212, .55);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.block .block-head a{
+    text-decoration: none!important;
+    justify-content: center;
+}
+.block .block-head .title {
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    color: #444152;
+    margin-top: 10px;
+}
+.block .block-head .title i {
+    margin-right: 8px ;
+    font-size: 22px;
+}
+.green {
+    color: #1dbf73;
+}
+
+.theme-btn.primary-btn {
+    color: #fff;
+    background-color: #1dbf73;
+}
+
+.theme-btn.sm-btn {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 12px;
+}
+
+.theme-btn {
+    padding: 8px;
+}
+
+.theme-btn {
+    font-size: 15px !important;
+}
+/*grid my project*/
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px 50px;
+    padding: 15px 20px;
+    text-decoration: none !important;
+    margin-bottom: 20px;
+}
+.progress-box .up {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    text-decoration: none !important;
+}
+
+.progress-box .up .title {
+    font-size: 14px;
+    color: #707070;
+    text-decoration: none !important;
+}
+
+.progress-box .up .percent {
+    font-size: 12px;
+    color: #707070;
+}
+.progress-box .track {
+    height: 4px;
+    background-color: #d4d4d4;
+    border-radius: 4px;
+}
+.progress-box .track .bar {
+    height: 100%;
+    background-color: #1dbf73;
+    border-radius: 4px;
+    width: 0%;
+}
+.progress-box a{
+    text-decoration: none !important;
+}
+.block .has-padding {
+    padding: 20px;
+}
+.progress-box {
+    margin-bottom: 20px;
+}
+/* button contest */
+.theme-btn.secondary-btn {
+    color: #707070;
+    background-color: #f8f8f8;
+    border: 1px solid #dee0e1;
+}
+
+.theme-btn.sm-btn {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 12px;
+}
+
+.theme-btn {
+    padding: 8px;
+}
+.pad{
+    margin-top: 20px;
+}
+/* the second half (profile) */
+.side-icon {
+    width: 30px;
+    height: 30px;
+    background-color: #f8f8f8;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #707070;
+    font-size: 16px;
+    cursor: pointer;
+    border: 1px solid #dee0e1;
+}
+.user-info-column {
+    text-align: center;
+}
+.user-info-column .img.marked {
+    border: 4px solid #f8f8f8;
+    padding: 3px;
+    width: 81px;
+    height: 81px;
+    position: relative;
+}
+
+.user-info-column .img {
+    width: 63px;
+    height: 63px;
+    border-radius: 50%;
+    margin: auto;
+    margin-bottom: 10px;
+    display: block;
+}
+.user-info-column .img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.user-info-column .img.marked svg circle {
+    stroke: #1dbf73;
+}
+
+.user-info-column .img.marked svg circle {
+    stroke-dasharray: 250;
+    stroke-linecap: round;
+    stroke-width: 4px;
+    stroke: #8dddb8;
+    fill: none;
+}
+.user-info-column .img.marked svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-90deg);
+}
+.user-info-column .name {
+    font-size: 18px;
+    color: #262626;
+    display: block;
+    margin-bottom: 10px;
+    margin-right: 5px;
+    text-decoration: none !important;
+}
+ .user-info-column .name a{
+        margin-right: 5px;
+            text-decoration: none !important;
+            color: #262626;
+ }
+
+.online-after {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+}
+.online-after::after {
+    content: "";
+    display: block;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background-color: #1dbf73;
+}
+
+.theme-color {
+    color: #1dbf73 !important;
+    margin-bottom: 10px;
+}
+.user-info-column .stars {
+    margin: 14px 0;
+}
+
+.user-info-column .stars {
+    margin-bottom: 19px;
+        color: #707070;
+    line-height: 10px;
+}
+.user-info-column .stars i {
+    font-size: 14px;
+}
+
+.user-info-column .stars i {
+    font-size: 10px;
+    margin: 0 1px;
+    color: #707070;
+}
+
+.fa-star {
+    color: #e5e5e5;
+}

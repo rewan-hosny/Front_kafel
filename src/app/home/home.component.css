@@ -1,0 +1,330 @@
+body {
+    font-family: font,sans-serif,"font awesome 5 free";}
+
+
+
+/* img*/
+.welcome{
+
+  max-width: 400px; /* Adjust the value to your desired width */
+  height: auto; /* Maintain the aspect ratio */
+
+}
+/* title (welcome to kafiil)*/
+.home-slider .title{
+        font-size: 35px;
+    margin-bottom: 16px;
+
+}
+.info-contact{
+        font-size: 17px;
+    margin-bottom: 20px;
+    color: #555;
+    align-items: normal;
+
+}
+/*button services */
+.explore {
+  display: inline-block;
+  border: 2px solid #1dbf73;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 15px;
+  text-decoration: none;
+  background-color: #1dbf73;
+     margin-right: 20px;
+
+
+   color: #fff;
+
+}
+
+.explore:hover {
+background-color: #158350;
+  color: #fff;
+   border: 2px solid #158350;
+}
+/*watch video*/
+/*button register login*/
+.watch {
+  display: inline-block;
+  border: 2px solid #dee0e1;
+  border-radius: 4px;
+  font-size: 15px;
+  padding: 10px;
+  text-decoration: none;
+  background-color: #f8f8f8;
+
+   color: #707070;
+   margin-right: 20px;
+
+}
+
+.watch:hover {
+  background-color: #fff;
+  color: #158350;
+}
+
+/*swapper*/
+.owl-dots {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 10px;
+}
+
+.home-slider {
+    background-image: url(/assets/images/dot.svg);
+    background-position: 104% 10px;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    text-align: center;
+    padding-bottom: 30px;
+    padding-top: 30px;
+  
+}
+
+
+.home-slider .owl-dots .owl-dot {
+    width: 18px;
+    height: 6px;
+    border-radius: 5px;
+    margin: 0 3px;
+    background-color: #dee0e1;
+    transition: .5s;
+}
+.prev {
+    color: #707070;
+    font-size: 13px;
+    transform: translateY(1px);
+    cursor: pointer;
+}
+.next
+{
+    color: #707070;
+    font-size: 13px;
+    transform: translateY(1px);
+    cursor: pointer;
+}
+.home-slider .owl-dots .owl-dot .active {
+    width: 42px;
+    background-color: #1dbf73;
+}
+/*   how it works          */
+.section2{
+  background-color: #fff;
+  padding-top: 20px;
+
+}
+.sec-center-title {
+    color: #262626;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+/* ul (services,projects,contests)*/
+
+.normal-tabs{
+      display: inline-flex;
+    overflow: auto;
+    flex-wrap: nowrap;
+    max-width: 100%;
+    padding-bottom: 50px;
+    justify-content: center;
+}
+.normal-tabs li a {
+    width: auto;
+    min-width: 133px;
+    font-size: 14px;
+    padding: 10px;
+    border-right: 1px solid #dee0e1;
+}
+.normal-tabs li a {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    background-color: #f8f8f8;
+    color: #707070;
+    width: 289px;
+    text-align: center;
+    position: relative;
+    white-space: nowrap;
+    border-top: 1px solid #dee0e1;
+    border-bottom: 1px solid #dee0e1;
+}
+@media (max-width: 768px) {
+  .normal-tabs li a {
+    max-width: 200px; /* Decrease the maximum width for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .normal-tabs li a {
+    max-width: 900px; /* Further decrease the maximum width for even smaller screens */
+  }
+}
+  @media (max-width: 300px) {
+  .normal-tabs li a {
+    max-width: 40px; /* Further decrease the maximum width for even smaller screens */
+  }
+  }
+.normal-tabs li a.active {
+    background-color: #1dbf73;
+    color: #fff;
+    border-color: #1dbf73!important;
+}
+.video-icon {
+  display: block;
+  font-size: 36px;
+  color: #1dbf73;
+  margin-bottom: 20px;
+  background-color: transparent;
+  margin-left: auto;
+  margin-right: auto;
+  border: white;
+}
+
+ .services-row {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+
+.service-show {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+@media (max-width: 768px) {
+
+  .services-row {
+    flex-direction: column;
+  }
+}
+.service-number {
+  display: flex;
+  width:40px;
+     font-weight: 600;
+    margin: 18px 0;
+ padding: 10px;
+  color: white;
+  margin-bottom: 20px;
+  background-color: #1dbf73;
+    align-items: center;
+    justify-content: center;
+      border: 0;
+    outline: 0;
+    box-sizing: border-box;
+  border-radius: 100%;
+}
+
+.title {
+    color: #262626;
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+.info-content {
+    max-width: 264px;
+}
+/*the third section*/
+
+.sec-center-p {
+    color: #707070;
+    max-width: 646px;
+    font-size: 14px;
+    margin-bottom: 30px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section3{
+   padding-bottom: 30px;
+    padding-top: 30px;
+   
+}
+
+.features-list {
+    font-size: 17px;
+    color: #707070;
+}
+.feature-title{
+      color: #1dbf73;
+      font-size: 22px;
+      margin-bottom: 30px;
+}
+/*section4 */
+.section4{
+    padding-bottom: 30px;
+    padding-top: 30px;
+    background-color: #ffffff;
+}
+
+/*the gride in section 4*/
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    grid-gap: 20px;
+}
+
+.category-box {
+    display: block;
+    text-align: center;
+    border: 1px solid #dee0e1;
+    background-color: #f8f8f8;
+    padding: 30px;
+    border-radius: 8px;
+ text-decoration: none!important;
+}
+.category-box i {
+    color: #1dbf73;
+    font-size: 45px;
+    height: 50px;
+    margin-bottom: 20px;
+    display: block;
+}
+.category-box .title {
+      color: #707070;
+    font-size: 20px;
+    font-weight: 600;
+}
+/*section 5*/
+.section5{
+     padding-bottom: 30px;
+    padding-top: 30px;
+   
+}
+.title5{
+    font-size: 50px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+.desc {
+    margin-bottom: 30px;
+}
+.desc-font {
+    color: #202020;
+    font-size: 14px;
+}
+
+.theme-btn.primary-btn {
+   display: inline-block;
+  border: 2px solid #1dbf73;
+  border-radius: 4px;
+  font-size: 15px;
+  padding: 10px;
+  text-decoration: none;
+  background-color: #1dbf73;
+
+   color: #fff;
+}
+

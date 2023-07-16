@@ -1,0 +1,233 @@
+
+.first-section
+{
+ display: flex;
+ justify-content: space-between;
+ padding: 20px;
+ background-color: white;
+ border:1px solid #dee0e1;
+ margin-top: 60px;
+ border-radius: 8px;
+}
+.right{
+    display: flex;
+}
+.right .imge{
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.right .imge img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/*title*/
+
+
+.info{
+    margin-left: 10px;
+}
+ .right .name .tag {
+    padding: 2px 8px;
+    background-color: #1dbf73;
+    font-size: 10px;
+    color: #fff;
+    border-radius: 3px;
+    text-decoration: none!important ;
+}
+ .right .name .tag {
+    margin-right: 5px;
+}
+.right .name {
+    font-size: 16px;
+    color: #262626;
+    margin-bottom: 14px;
+    display: block;
+    text-decoration: none!important ;
+}
+/*down*/
+
+.right .down {
+    display: flex;
+    align-items: center;
+}
+
+.right .down .text {
+    font-size: 14px;
+    color: #777;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    margin-left: 10px;
+}
+
+.theme-color {
+    color: #1dbf73!important;
+}
+
+
+.black-anchor:link {
+    color: #000;
+    margin-left: 2px;
+    text-decoration: none!important;
+}
+/*النص التاني */
+
+.block{
+    margin-top: 20px;
+
+        background-color: #fff;
+    border-radius: 8px;
+    border: 1px solid #dee0e1;
+    margin-bottom: 15px;
+}
+
+.block-head{
+    display: flex;
+    justify-content: space-between;
+        padding: 10px 20px;
+    min-height: 57px;
+    font-size: 16px;
+    color: #707070;
+    border-bottom: 1px solid rgba(212,212,212,.55);
+    display: flex;
+    align-items: center;
+}
+.block .block-head .title {
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    color: #444152;
+
+    font-size: 1em;
+}
+.block .block-head .title i{
+      margin-right:5px;
+}
+.block-head .fa-chevron-down {
+    transform: none;
+    transition: .3s;
+}
+/*الصورة اللي علي اليمين */
+.project-owner{
+    display: flex;
+    padding: 20px;
+}
+
+
+/*table*/
+.info-table {
+    font-size: 16px;
+    margin: 0;
+    width: 100%;
+    color: #707070;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.info-table tr td {
+    padding: 20px 14px;
+}
+.info-table tr:not(:last-child) {
+    border-bottom: 1px solid #dee0e1;
+}
+.info-table tr:nth-child(even) {
+    background-color: #f8f8f8;
+}
+.imge{
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.imge img{
+        width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+}
+ .project-owner .info{
+    width:100%;
+ }
+
+ .project-owner .info a{
+text-decoration: none!important;
+    font-size: 16px;
+    color: #555;
+    display: block;
+    margin-bottom: 5px;
+
+}
+ .project-owner .info .text {
+    display: block;
+    font-size: 12px;
+    color: #707070;
+}
+/*test*/
+.right .name .stars {
+    margin-left: 20px;
+}
+
+.right .date-time span {
+    display: inline-block;
+       font-size: 14px;
+    color: #707070;
+    margin-right: 10px;
+
+}
+.offer-desc{
+         font-size: 16px;
+    color: #707070;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+.right .name .stars i {
+    font-size: 10px;
+}
+.fa-star {
+    color: #e5e5e5;
+}
+.offer-box{
+       padding: 20px 30px;
+}
+
+/* add your bid   */
+.group-input {
+    margin-bottom: 20px;
+}
+.label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #707070;
+}
+.block .has-padding {
+    padding: 12px 15px;
+}
+.little-info {
+    font-size: 11px;
+    color: #636363;
+}
+
+.input {
+    display: block;
+    width: 100%;
+    height: 45px;
+    border-radius: 5px;
+    border: 1px solid #dee0e1;
+    padding: 0 15px;
+    font-size: 12px;
+    color: #707070;
+}
+.group-input {
+    margin-bottom: 20px;
+}
+.theme-btn.primary-btn {
+    color: #fff;
+    background-color: #1dbf73;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+}

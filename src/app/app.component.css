@@ -1,0 +1,63 @@
+body {
+    font-family: font,sans-serif,"font awesome 5 free";
+    overflow-x: hidden;
+    color: #202020;
+    background-color: #f1f2f2;
+    background-size: cover;
+  background-repeat: repeat;
+  background-attachment: fixed;
+    margin: 0;
+      padding: 0;
+}
+
+
+.header{
+    background-color: white;
+    box-shadow: 0px 3px 6px hwb(0 0% 100% / 0.07)
+}
+
+.navbar-nav {
+  margin-left: auto;
+}
+.logo {
+  max-width: 80px; /* Adjust the value to your desired width */
+  height: auto; /* Maintain the aspect ratio */
+}
+/*button register new account*/
+
+.button1 {
+  display: inline-block;
+  border: 2px solid #1dbf73;
+  border-radius: 4px;
+  font-size: 15px;
+  text-decoration: none;
+  background-color: #1dbf73;
+
+   color: #fff;
+
+}
+
+.button1:hover {
+background-color: #158350;
+  color: #fff;
+   border: 2px solid #158350;
+}
+
+/*button register login*/
+.button2 {
+  display: inline-block;
+  border: 2px solid #dee0e1;
+  border-radius: 4px;
+  font-size: 15px;
+  text-decoration: none;
+  background-color: #f8f8f8;
+
+   color: #707070;
+   margin-right: 20px;
+
+}
+
+.button2:hover {
+  background-color: #fff;
+  color: #158350;
+}
