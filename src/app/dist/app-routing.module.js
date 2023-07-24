@@ -16,6 +16,7 @@ var contests_component_1 = require("./contests/contests.component");
 var complete_profile_component_1 = require("./complete-profile/complete-profile.component");
 var project_details_component_1 = require("./project-details/project-details.component");
 var control_panel_component_1 = require("./control-panel/control-panel.component");
+var add_project_component_1 = require("./add-project/add-project.component");
 var routes = [
     { path: 'home', component: home_component_1.HomeComponent },
     { path: 'login', component: login_component_1.LoginComponent },
@@ -23,6 +24,7 @@ var routes = [
     { path: 'project', component: project_component_1.ProjectComponent },
     { path: 'projectDetails', component: project_details_component_1.ProjectDetailsComponent },
     { path: 'controlPanel', component: control_panel_component_1.ControlPanelComponent },
+    { path: 'addProject', component: add_project_component_1.AddProjectComponent },
     { path: 'contests', component: contests_component_1.ContestsComponent },
     { path: 'completeProfile', component: complete_profile_component_1.CompleteProfileComponent }
 ];
