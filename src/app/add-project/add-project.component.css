@@ -1,0 +1,129 @@
+.section1{
+    margin-top: 60px;
+    margin-bottom: 50px;
+    margin-right: 50px;
+    margin-left: 50px;
+}
+.block{
+
+    padding: 20px;
+        background-color: #fff;
+    border-radius: 8px;
+    border: 1px solid #dee0e1;
+    margin-bottom: 15px;
+}
+.block .block-head {
+    padding: 10px 20px;
+    min-height: 57px;
+    font-size: 16px;
+    color: #707070;
+    border-bottom: 1px solid rgba(212,212,212,.55);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.mb-15 {
+    margin-bottom: 15px!important;
+}
+.input {
+    display: block;
+    width: 100%;
+    height: 45px;
+    border-radius: 5px;
+    border: 1px solid #dee0e1;
+    padding: 0 15px;
+    font-size: 12px;
+    color: #707070;
+}
+.label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #707070;
+    margin-top: 10px;
+}
+
+.group-input {
+    margin-bottom: 20px;
+}
+.filepond--root {
+    box-sizing: border-box;
+    position: relative;
+    margin-bottom: 1em;
+    font-size: 1rem;
+    line-height: normal;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+    font-weight: 450;
+    text-align: center;
+    justify-content: center;
+    contain: layout style size;
+    height: 76px;
+        color: #202020;
+    background-color: #f1f2f2;
+}
+.label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #707070;
+}
+
+.filepond--browser.filepond--browser {
+    
+    margin: 0;
+    padding: 0;
+    left: 1em;
+    top: 1.75em;
+    width: calc(100% - 2em);
+    opacity: 0;
+    font-size: 0;
+}
+.theme-btn.primary-btn {
+    color: #fff;
+    background-color: #1dbf73;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+}
+/*the second section*/
+
+
+.tips-content {
+    color: #666;
+     
+}
+p {
+    color: #202020;
+    margin: 0;
+    font-size: 1em;
+}
+
+
+.tips-block {
+    margin: 15px 0;
+}
+
+.mb-4, .my-4 {
+    margin-bottom: 1.5rem!important;
+}
+
+p{
+    margin-bottom: 5px;
+}
+.tips-block ul li {
+    margin: 10px 0;
+}
+.pad{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+/* Add this to your CSS file or style section */
+.budget-input-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.budget-input-wrapper .budget-input-separator {
+  margin: 0 5px;
+}

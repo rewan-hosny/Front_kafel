@@ -1,0 +1,1 @@
+{"version":3,"sources":["AddImge.module.ts"],"names":[],"mappings":";;AAAA;IAAA;IAKA,CAAC;IAAD,eAAC;AAAD,CALA,AAKC,IAAA;AALY,4BAAQ","file":"AddImge.module.js","sourcesContent":["export class AddImage {\r\n\r\n\r\nimageUrl: File | undefined; \r\n\r\n}"]}

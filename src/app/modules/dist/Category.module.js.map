@@ -1,0 +1,1 @@
+{"version":3,"sources":["Category.module.ts"],"names":[],"mappings":";;AAAA;IAAA;QAEE,SAAI,GAAW,EAAE,CAAC;QAClB,OAAE,GAAW,CAAC,CAAC;IAIjB,CAAC;IAAD,oBAAC;AAAD,CAPA,AAOC,IAAA;AAPY,sCAAa","file":"Category.module.js","sourcesContent":["export class AllCategories {\r\n\r\n  name: string = '';\r\n  id: number = 0;\r\n\r\n\r\n\r\n}"]}

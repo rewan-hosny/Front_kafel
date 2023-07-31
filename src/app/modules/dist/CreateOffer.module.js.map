@@ -1,0 +1,1 @@
+{"version":3,"sources":["CreateOffer.module.ts"],"names":[],"mappings":";;AAAA;IAAA;QAEE,gBAAW,GAAW,EAAE,CAAC;QACzB,UAAK,GAAW,EAAE,CAAC;IAIrB,CAAC;IAAD,kBAAC;AAAD,CAPA,AAOC,IAAA;AAPY,kCAAW","file":"CreateOffer.module.js","sourcesContent":["export class CreateOffer {\r\n\r\n  description: string = '';\r\n  price: string = '';\r\n\r\n\r\n\r\n}"]}

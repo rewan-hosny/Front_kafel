@@ -1,0 +1,1 @@
+{"version":3,"sources":["GetImage.module.ts"],"names":[],"mappings":";;AAAA;IAAA;QAGA,aAAQ,GAAU,GAAG,CAAC;IAEtB,CAAC;IAAD,eAAC;AAAD,CALA,AAKC,IAAA;AALY,4BAAQ","file":"GetImage.module.js","sourcesContent":["export class GetImage {\r\n\r\n\r\nimageUrl: string =\" \"; \r\n\r\n}"]}

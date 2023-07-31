@@ -1,0 +1,1 @@
+{"version":3,"sources":["environment.ts"],"names":[],"mappings":";;AAAa,QAAA,WAAW,GAAG;IACzB,UAAU,EAAE,KAAK;IACjB,MAAM,EAAE,4BAA4B;CACrC,CAAC","file":"environment.js","sourcesContent":["export const environment = {\r\n  production: false,\r\n  apiUrl: \"https://localhost:7130/api\"\r\n};"]}

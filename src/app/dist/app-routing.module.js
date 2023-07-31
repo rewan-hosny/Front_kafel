@@ -17,16 +17,18 @@ var complete_profile_component_1 = require("./complete-profile/complete-profile.
 var project_details_component_1 = require("./project-details/project-details.component");
 var control_panel_component_1 = require("./control-panel/control-panel.component");
 var add_project_component_1 = require("./add-project/add-project.component");
+var profile_setting_component_1 = require("./profile-setting/profile-setting.component");
 var routes = [
     { path: 'home', component: home_component_1.HomeComponent },
     { path: 'login', component: login_component_1.LoginComponent },
     { path: 'register', component: register_component_1.RegisterComponent },
     { path: 'project', component: project_component_1.ProjectComponent },
-    { path: 'projectDetails', component: project_details_component_1.ProjectDetailsComponent },
+    { path: 'project-details/:id', component: project_details_component_1.ProjectDetailsComponent },
     { path: 'controlPanel', component: control_panel_component_1.ControlPanelComponent },
     { path: 'addProject', component: add_project_component_1.AddProjectComponent },
     { path: 'contests', component: contests_component_1.ContestsComponent },
-    { path: 'completeProfile', component: complete_profile_component_1.CompleteProfileComponent }
+    { path: 'complete', component: complete_profile_component_1.CompleteProfileComponent },
+    { path: 'profileSetting', component: profile_setting_component_1.ProfileSettingComponent }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {

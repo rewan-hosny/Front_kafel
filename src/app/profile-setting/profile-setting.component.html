@@ -1,0 +1,162 @@
+
+<section class="section1">
+    <div class="container">
+        <!-- the first row -->
+<div class="row">
+
+
+
+   <div class="col-12 col-lg-4" >
+    <div class="">
+        <div class="block">
+            <div class="block-head">
+                <p class="title">
+                    <i class="fas fa-user"></i>
+                    My Account
+                </p>
+                <div class="left">
+                    <a href="https://kafiil.com/users/setting" class="side-icon mr">
+                        <i class="fas fa-cog"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="has-padding">
+                <div class="user-info-column">
+                    <a href="https://kafiil.com/u/rewan_hosny2" class="img marked">
+                        <img class="" src="C:/rewan/project/Images/a9e2ca36-4b3e-478e-9fc9-a4bf7a7ab815_rewan.jpg" alt="">
+                        <svg width="82" height="82">
+                            <circle r="39" cx="41" cy="41" style="stroke-dashoffset: calc(250 - (250 * 56) / 100);">
+                            </circle>
+                        </svg>
+                    </a>
+                    <p class="name online-after">
+                        <a class="black-anchor" href="https://kafiil.com/u/rewan_hosny2">Rewan Hosny</a>
+                    </p>
+                    <div class="">
+                        <div class="dashboard-sidebar-tag">
+                            <span class="theme-color">Programming, Web And Application Development</span>
+                        </div>
+                        <p class="info-content">
+                            <i class="fas fa-layer-group"></i>
+                            <span>Seller Level: <b>new</b></span>
+                        </p>
+                    </div>
+                    <div class="stars">
+                        <i class="fas fa-star "></i>
+                        <i class="fas fa-star "></i>
+                        <i class="fas fa-star "></i>
+                        <i class="fas fa-star "></i>
+                        <i class="fas fa-star "></i>
+                        <span class="small-text">
+                            0.0
+                            <span class="hint-text">
+                                (0)
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   </div>
+
+       <div class="col-12 col-lg-8 " >
+  <div class="col-12 col-lg-9">
+<div class="block">
+<div class="block-head mb-15" style="margin-bottom: 0px !important;">
+<p class="title">
+<i class="fas fa-cogs"></i>
+Setting </p>
+</div>
+
+<div class="tab-content" id="basic_info">
+<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+<form    (ngSubmit)="UpdatePerson()" class="has-padding" action="https://kafiil.com/users/update-my-profile" method="post" abineguid="F699C5F19EAC45EA9B5D0A28CFEFFA7B">
+
+<div class="row">
+<input type="file" id="avatar_uploader" style="display: none;">
+<div id="avatar_viewer" style="margin:10px 0px; position:relative; width:110px; height: 110px; border-radius: 50%; background-size: cover; background-image:url(&quot;{{getImage.imageUrl}}&quot;)">
+<a id="change_avatar_button" href="#">Change Profile</a>
+<p>{{getImage.imageUrl}}</p>
+</div>
+<div class="modal fade" id="change_avatar_modal" tabindex="-1" role="dialog" aria-labelledby="change_avatar_modalTitle" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal-content">
+<div class="modal-body">
+
+<div class="croppie-container"><img class="avatar_item cr-original-image" src="assets/images/rewan.jpg" aria-hidden="true" alt=""><div class="cr-boundary" aria-dropeffect="none" style="width: 350px; height: 350px;"><img class="cr-image" alt="preview" aria-grabbed="false"><div class="cr-viewport cr-vp-square" tabindex="0" style="width: 300px; height: 300px;"></div><div class="cr-overlay"></div></div><div class="cr-slider-wrap"><input class="cr-slider" type="range" step="0.0001" aria-label="zoom"></div></div></div>
+<div class="modal-footer">
+<button type="button" class="btn primary-btn btn-secondary" data-dismiss="modal">Close</button>
+<button type="button" class="btn primary-btn" style="background-color: #1DBF73; color:white;" id="save_avatar">Save</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-12 col-sm-6">
+<div class="group-input required">
+<label class="label">
+First Name </label>
+<input type="text" name="first_name" class="input" placeholder="{{person.firstName}}" value="{{person.firstName}}"  [(ngModel)]="updatedPerson.firstName" required="">
+</div>
+</div>
+<div class="col-12 col-sm-6">
+<div class="group-input required">
+<label class="label">
+Last Name </label>
+<input type="text" name="last_name" class="input" placeholder="{{person.lastName}}"  value="{{person.lastName}}"[(ngModel)]="updatedPerson.lastName" required="">
+</div>
+</div>
+</div>
+<div class="group-input required">
+<label class="label">
+User Name <i class="fas fa-lightbulb" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="A Unique Name For Your Page On :appName, It Must Be In English, Only Letters, Numbers And The _ Sign Are Allowed"></i>
+</label>
+<input disabled="" type="text" class="input" value="rewan_hosny2">
+</div>
+<div class="group-input required">
+<label class="label">
+Email <a class="theme-anchor" >Change</a>
+</label>
+<input type="text" name="last_name" class="input" placeholder="{{person.email}}"  value="{{person.email}}" [(ngModel)]="updatedPerson.email" required="">
+
+</div>
+
+
+
+<div class="row">
+<div class="col-12 col-sm-6">
+<div class="group-input required">
+<label class="label">
+New Password </label>
+<input type="password" name="new_password" class="input" placeholder="Password Confirmation"  [(ngModel)]="updatedPerson.password" required="">
+</div>
+</div>
+<div class="col-12 col-sm-6">
+
+
+</div>
+
+</div>
+
+
+<div class="btns">
+<input type="submit" class="theme-btn primary-btn md-btn ml-2" value="Update">
+</div>
+<input type="hidden" name="_token" value="KI6juOZzXhE6JVjiy7kFkFyonC1R5RcMeNBsttnJ"> <input type="hidden" name="_method" value="PUT">
+</form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </div>
+
+    </div>
+
+
+
+    </div>
+</section>

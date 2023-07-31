@@ -1,12 +1,12 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+export class Person{
+
+  firstName: string = '';
+  lastName : string = '';
+
+  email : string = '';
+  password : string = '';
 
 
 
-@NgModule({
-  declarations: [],
-  imports: [
-    CommonModule
-  ]
-})
-export class PersonModule { }
+
+}

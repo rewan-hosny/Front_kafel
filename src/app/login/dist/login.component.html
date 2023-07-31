@@ -1,23 +1,23 @@
 
-
+<section class="sectionlog">
 
 <div class="container">
- 
-<div class="row login-box">
+    <div class="login-box">
+<div class="row">
 <div class="col-12 col-lg-6 p-0">
 <div class="right">
 <p class="welcome">Welcome Back Again</p>
-<form>
+<form  (ngSubmit)="login()">
     <div>
         <label class="label">
 Email</label>
-<input required="" type="email" name="email" class="input" placeholder="email" value="">
+<input required="" type="email" name="email" class="input" placeholder="email" value="" [(ngModel)]="newItem.Email">
     </div>
 
        <div>
         <label class="label">
 Password</label>
-<input required="" type="password" name="password" class="input" placeholder="password" value="">
+<input required="" type="password" name="password" class="input" placeholder="password" value="" [(ngModel)]="newItem.password">
     </div>
 
     <div class="check-row">
@@ -31,7 +31,7 @@ Remember me </span>
 Forgotten Password?</a>
 </div>
 
-<button class="theme-btn primary-btn w-100 buttonlog">
+<button type="submit" class="theme-btn primary-btn w-100 buttonlog">
 Login </button>
 </form>
 
@@ -50,5 +50,6 @@ Don't Have An Account? <a href="https://kafiil.com/user/register">Register Now</
 </div>
 
 </div>
-
 </div>
+</div>
+</section>

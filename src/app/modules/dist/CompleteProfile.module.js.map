@@ -1,0 +1,1 @@
+{"version":3,"sources":["CompleteProfile.module.ts"],"names":[],"mappings":";;AAAA;IAAA;QAEE,WAAM,GAAW,EAAE,CAAC;QACpB,cAAS,GAAW,EAAE,CAAC;IAIzB,CAAC;IAAD,wBAAC;AAAD,CAPA,AAOC,IAAA;AAPY,8CAAiB","file":"CompleteProfile.module.js","sourcesContent":["export class CompleteMyProfile {\r\n\r\n  skills: string = '';\r\n  portfolio: string = '';\r\n\r\n\r\n\r\n}"]}

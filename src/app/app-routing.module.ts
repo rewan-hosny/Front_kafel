@@ -10,20 +10,20 @@ import { CompleteProfileComponent } from './complete-profile/complete-profile.co
 import { ProjectDetailsComponent } from './project-details/project-details.component';
 import { ControlPanelComponent } from './control-panel/control-panel.component';
 import { AddProjectComponent } from './add-project/add-project.component';
+import { ProfileSettingComponent } from './profile-setting/profile-setting.component';
 
 const routes: Routes = [
 
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
         { path: 'register', component: RegisterComponent },
-  { path: 'project', component: ProjectComponent },
-  { path: 'projectDetails', component: ProjectDetailsComponent },
+  { path: 'project', component: ProjectComponent  },
+  { path: 'project-details/:id', component: ProjectDetailsComponent },
   { path: 'controlPanel', component: ControlPanelComponent },
-        {path:'addProject',component:AddProjectComponent},
-
-                {path:'contests',component:ContestsComponent},
-                {path:'completeProfile',component:CompleteProfileComponent}
-
+  { path: 'addProject', component: AddProjectComponent },
+  {path:'contests',component:ContestsComponent},
+  {path:'complete',component: CompleteProfileComponent },
+  {path:'profileSetting',component: ProfileSettingComponent }
 ];
 
 @NgModule({

@@ -133,4 +133,25 @@ padding: 30px;
 }
 .top{
     margin-top: 10px;
+      justify-content: center; 
+}
+
+
+.button-container {
+  display: flex;
+  justify-content: center;
+ 
+}
+
+.buttonlog {
+  /* Optional: Add any shared styles for the buttons here */
+  margin-right: 10px; /* Optional: Add some spacing between the buttons */
+}
+.button-container p{
+    justify-content: center;
+    margin-top: 20px;
+    color: #1dbf73;
+    margin-left: 10px;
+    margin-right: 10px;
+    align-items: center;
 }

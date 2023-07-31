@@ -9,7 +9,7 @@
        <form>
 <div class="filter-body">
     <!-- add project -->
-<a href="https://kafiil.com/project/create" class="theme-btn primary-btn w-100">
+<a  href="http://localhost:4200/addProject" class="theme-btn primary-btn w-100">
 <i class="far fa-plus-square"></i>
 add project </a>
 <!-- end add project -->
@@ -172,94 +172,45 @@ Open </label>
 </h2>
 <!-- third component -->
 
-<div>
-   
-        <div class="project">
-            <div class="box-project">
-            <div class="right">
-                <a class="imge" href="https://kafiil.com/u/mohamed_mahmoud2" >
-<img class="" src="https://kafiil.s3.eu-central-1.amazonaws.com/media/avatar/b36e4b24c10ab686d40aeff2ea107642/c/5893348ef4f8c4cab842042df46c50b8-small.jpg" alt="">
-</a>
 
-
-<div class="info">
-<a href="https://kafiil.com/project/2-%D9%85%D8%B7%D9%84%D9%88%D8%A8-%D8%AA%D8%B5%D9%85%D9%8A%D9%85-%D9%85%D8%AC%D9%84%D8%A9-%D8%AA%D8%B9%D9%84%D9%8A%D9%85%D9%8A%D8%A9" class="name bold-text stopPropagation">
-<span class="tag dark-bg">Completed</span>
-need developer to do project .net
-</a>
-<div class="down">
-<a href="https://kafiil.com/u/abdullah3marzouk" class="text user">
-<i class="fas fa-user-tie"></i>
-rewan hosny</a>
-<span class="text">
-<i class="far fa-clock"></i>
-1 year ago
-</span>
-<span class="text">
-<i class="fas fa-hand-holding-usd"></i>
-12 Bids </span>
-</div>
-</div>
-
-            </div>
-
-            <div class="left">
-<p class="price text" style="max-width:105px;">
-$250 - $500
-</p>
-            </div>
-</div>
-
-        </div>
-
-
-</div>
 
 <!-- just for test -->
-<div>
- 
-        <div class="project">
-            <div class="box-project">
-            <div class="right">
-                <a class="imge" href="https://kafiil.com/u/mohamed_mahmoud2" >
+<div *ngFor="let project of projects" class="project" (click)="viewProjectDetails(project.id)">
+  <div class="box-project">
+    <div class="right">
+                   <a class="imge" href="https://kafiil.com/u/mohamed_mahmoud2" >
 <img class="" src="https://kafiil.s3.eu-central-1.amazonaws.com/media/avatar/b36e4b24c10ab686d40aeff2ea107642/c/5893348ef4f8c4cab842042df46c50b8-small.jpg" alt="">
 </a>
-
-
-<div class="info">
+      <div class="info">
 <a href="https://kafiil.com/project/2-%D9%85%D8%B7%D9%84%D9%88%D8%A8-%D8%AA%D8%B5%D9%85%D9%8A%D9%85-%D9%85%D8%AC%D9%84%D8%A9-%D8%AA%D8%B9%D9%84%D9%8A%D9%85%D9%8A%D8%A9" class="name bold-text stopPropagation">
-<span class="tag dark-bg">Completed</span>
-need developer to do project .net
-</a>
-<div class="down">
-<a href="https://kafiil.com/u/abdullah3marzouk" class="text user">
+          <span class="tag dark-bg">{{ project.statues }}</span>
+          {{ project.description }}
+        </a>
+        <div class="down">
+        <a href="https://kafiil.com/u/abdullah3marzouk" class="text user">
 <i class="fas fa-user-tie"></i>
-rewan hosny</a>
-<span class="text">
-<i class="far fa-clock"></i>
-1 year ago
-</span>
-<span class="text">
-<i class="fas fa-hand-holding-usd"></i>
-12 Bids </span>
-</div>
-</div>
-
-            </div>
-
-            <div class="left">
-<p class="price text" style="max-width:105px;">
-$250 - $500
-</p>
-            </div>
-</div>
-
+{{ project.person?.firstName + ' ' + project.person?.lastName}}</a>
+     
+          <span class="text">
+            <i class="far fa-clock"></i>
+            {{ project.dueDate }}
+          </span>
+        
         </div>
-
+      </div>
+    </div>
+    <div class="left">
+      <p class="price text" style="max-width:105px;">
+        {{"From "+ project.fromPrice +" To  "+ project.toPrice}}
+      </p>
+    </div>
+  </div>
 </div>
+
 <!-- again test -->
 
-<div>
+<!--
+     <div>
 
         <div class="project">
             <div class="box-project">
@@ -299,7 +250,8 @@ $250 - $500
 
         </div>
 
-    </div>
+    </div> 
+-->
 
 </div>
 </div>
@@ -309,43 +261,3 @@ $250 - $500
     </div>
 </section>
 
-
-<!-- 
-
-
-
-           <div class="categories-grid">
-      <a href="https://kafiil.com/projects/business-consulting-and-management-services-2" class="category-box">
-      <i class="fas fa-suitcase"></i>
-      <span class="title">
-      Business, Consulting ,Management Services </span>
-      </a>
-      <a href="https://kafiil.com/projects/programming-web-and-application-development-2" class="category-box">
-      <i class="fas fa-code"></i>
-      <span class="title">
-      Programming, Web ,Application Development </span>
-      </a>
-      <a href="https://kafiil.com/projects/design-video-and-audio-1" class="category-box">
-      <i class="fas fa-photo-video"></i>
-      <span class="title">
-      Design, Video And Audio </span>
-      </a>
-      <a href="https://kafiil.com/projects/marketing-and-sales-2" class="category-box">
-      <i class="fas fa-bullhorn"></i>
-      <span class="title">
-      Marketing And Sales </span>
-      </a>
-      <a href="https://kafiil.com/projects/writing-content-creation-translation-and-languag-2" class="category-box">
-      <i class="fas fa-newspaper"></i>
-      <span class="title">
-      Writing, Content Creation </span>
-      </a>
-      <a href="https://kafiil.com/projects/training-education-and-remote-assistance-2" class="category-box">
-      <i class="fas fa-chalkboard-teacher"></i>
-      <span class="title">
-      Training, Education</span>
-      </a>
-   
-      </div>
-
- -->
