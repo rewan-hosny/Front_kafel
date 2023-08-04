@@ -17,6 +17,8 @@ var OfferServicesService = /** @class */ (function () {
         this.router = router;
         this.Offer = "Offer/Offers";
         this.GetCategory = "Offer/allCategory";
+        this.Accept = "Offer/AcceptProject";
+        this.PostMessage = "Message/Message";
     }
     OfferServicesService.prototype.GetOffer = function (id) {
         var token = localStorage.getItem('Authorization');
@@ -40,6 +42,46 @@ var OfferServicesService = /** @class */ (function () {
     };
     OfferServicesService.prototype.GetAllCategories = function () {
         return this.http.get(environment_1.environment.apiUrl + "/" + this.GetCategory);
+    };
+    OfferServicesService.prototype.GetAcceptProject = function (id) {
+        var token = localStorage.getItem('Authorization');
+        var httpOptions = {
+            headers: new http_1.HttpHeaders({
+                'Authorization': "Bearer " + token,
+                'Content-Type': 'application/json'
+            })
+        };
+        return this.http.get(environment_1.environment.apiUrl + "/" + this.Accept + "/" + id, httpOptions);
+    };
+    OfferServicesService.prototype.GetMessages = function (id) {
+        var token = localStorage.getItem('Authorization');
+        var httpOptions = {
+            headers: new http_1.HttpHeaders({
+                'Authorization': "Bearer " + token,
+                'Content-Type': 'application/json'
+            })
+        };
+        return this.http.get(environment_1.environment.apiUrl + "/" + this.PostMessage + "/" + id, httpOptions);
+    };
+    OfferServicesService.prototype.AcceptProject = function (id) {
+        var token = localStorage.getItem('Authorization');
+        var httpOptions = {
+            headers: new http_1.HttpHeaders({
+                'Authorization': "Bearer " + token,
+                'Content-Type': 'application/json'
+            })
+        };
+        return this.http.post(environment_1.environment.apiUrl + "/" + this.Accept + "/" + id, {}, httpOptions);
+    };
+    OfferServicesService.prototype.PotsMessage = function (message, id) {
+        var token = localStorage.getItem('Authorization');
+        var httpOptions = {
+            headers: new http_1.HttpHeaders({
+                'Authorization': "Bearer " + token,
+                'Content-Type': 'application/json'
+            })
+        };
+        return this.http.post(environment_1.environment.apiUrl + "/" + this.PostMessage + "/" + id, message, httpOptions);
     };
     OfferServicesService = __decorate([
         core_1.Injectable({

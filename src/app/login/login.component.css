@@ -118,3 +118,14 @@
     text-decoration: none!important;
     color: #1dbf73;
 }
+/*the error message */
+.error{
+justify-content: center;
+    align-items: baseline;
+    padding-top: 20px;
+   
+    display: flex;}
+.error-p{
+     margin-top: 10x;
+    color: red;
+}

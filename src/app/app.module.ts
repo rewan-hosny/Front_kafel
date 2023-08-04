@@ -20,6 +20,7 @@ import { FormsModule } from '@angular/forms';
 import { JWT_OPTIONS } from '@auth0/angular-jwt';
 import { LocalStorageService } from 'ngx-webstorage';
 import { ProfileSettingComponent } from './profile-setting/profile-setting.component';
+import { ManageProjectComponent } from './manage-project/manage-project.component';
 
 
 
@@ -37,7 +38,8 @@ import { ProfileSettingComponent } from './profile-setting/profile-setting.compo
     ProjectDetailsComponent,
     ControlPanelComponent,
     AddProjectComponent,
-    ProfileSettingComponent
+    ProfileSettingComponent,
+    ManageProjectComponent
   ],
   imports: [
     BrowserModule,

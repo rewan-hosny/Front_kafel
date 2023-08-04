@@ -52,6 +52,7 @@ var ProfileSettingComponent = /** @class */ (function () {
         var _this = this;
         this.authService.GetImage().subscribe(function (result) {
             _this.getImage = result;
+            _this.imageSrc = "data:image/jpeg;base64," + _this.getImage.imageUrl;
         }, function (error) {
             console.log(error);
         });

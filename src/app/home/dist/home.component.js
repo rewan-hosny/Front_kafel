@@ -54,6 +54,7 @@ var HomeComponent = /** @class */ (function () {
         //     },
         //     // Add more sections as needed
         //   ];
+        this.isLoggedIn = false;
         this.services = [
             [
                 { title: 'explore services', description: 'browse the services and compare them to choose the most suitable for you', image: '/assets/images/search.svg' },
@@ -90,6 +91,8 @@ var HomeComponent = /** @class */ (function () {
                 clickable: true
             }
         });
+        var isLoggedInString = localStorage.getItem("isLoggedIn");
+        this.isLoggedIn = isLoggedInString ? JSON.parse(isLoggedInString) : false;
     };
     HomeComponent.prototype.toggleSection = function (direction) {
         if (direction === 'next') {

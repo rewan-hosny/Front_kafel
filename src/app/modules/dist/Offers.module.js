@@ -31,6 +31,7 @@ var Person = /** @class */ (function () {
         this.firstName = '';
         this.lastName = '';
         this.email = '';
+        this.imageUrl = '';
     }
     return Person;
 }());

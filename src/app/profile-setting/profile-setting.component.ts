@@ -13,7 +13,8 @@ import { GetImage } from '../modules/GetImage.module';
 export class ProfileSettingComponent {
   person: Person = new Person();
   updatedPerson: Person = new Person();
-getImage: GetImage = new GetImage();
+  getImage: GetImage = new GetImage();
+    public imageSrc: string | undefined;
   constructor(private http: HttpClient,  private router: Router, private authService:AuthServicesService, private jwtHelper: JwtHelperService) { }
     ngOnInit(): void {
       this.PersonData();
@@ -60,6 +61,7 @@ getImage: GetImage = new GetImage();
   this.authService.GetImage().subscribe(
     (result: any) => {
       this.getImage = result;
+       this.imageSrc = `data:image/jpeg;base64,${this.getImage.imageUrl}`;
     },
     (error: any) => {
       console.log(error);

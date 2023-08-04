@@ -4,7 +4,7 @@ export class Project{
   fromPrice: number = 0;
 toPrice: number = 0;
   dueDate : string = '';
-  statues: string = '';
+  statues: number = 0;
   categoryId : number = 0;
   category: {
     name: string;
@@ -13,6 +13,7 @@ toPrice: number = 0;
   person: {
     firstName: string;
     lastName: string;
+    imageUrl: string;
   } | null = null; // Initialize to null
 
 }

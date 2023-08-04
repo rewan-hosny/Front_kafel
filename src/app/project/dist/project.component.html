@@ -14,14 +14,14 @@
 add project </a>
 <!-- end add project -->
 <!-- search  -->
-<div class="side-search">
+<!-- <div class="side-search">
     <input class="text" type="text" min="3" placeholder="search for ..." id="search-filter" value="">
     <button class="but" type="submit" >
         <i class="fas fa-search but"></i>
     </button>
 
 
-</div>
+</div> -->
 
 
 
@@ -31,14 +31,14 @@ add project </a>
 <!-- categories -->
 <div class="side-collapse-links">
     <div id="accordion">
-        <button class="collapse-btn" type="button" data-target="#collapseOne" data-toggle="collapse">
+        <button   (click)="selectCategory(null)" class="collapse-btn" type="button" data-target="#collapseOne" data-toggle="collapse">
             Categories <i class="fas fa-chevron-down d-block"></i>
         </button>
         <div id="collapseOne" class="collapse show">
             <div class="links">
                 <div style="border-bottom: 1px solid #DEE0E1;">
-                    <a style="border-bottom: initial"
-                        href="https://kafiil.com/projects/business-consulting-and-management-services-2"
+                    <a    (click)="selectCategory(2)" style="border-bottom: initial"
+                       
                         class="link apply-filter category-filter " category_id="199"
                         category_slug="business-consulting-and-management-services-2">
                         <div class="right">
@@ -49,8 +49,8 @@ add project </a>
                     </a>
                 </div>
                 <div style="border-bottom: 1px solid #DEE0E1;">
-                    <a style="border-bottom: initial"
-                        href="https://kafiil.com/projects/programming-web-and-application-development-2"
+                    <a  (click)="selectCategory(1)" style="border-bottom: initial"
+                   
                         class="link apply-filter category-filter " category_id="200"
                         category_slug="programming-web-and-application-development-2">
                         <div class="right">
@@ -61,7 +61,7 @@ add project </a>
                     </a>
                 </div>
                 <div style="border-bottom: 1px solid #DEE0E1;">
-                    <a style="border-bottom: initial" href="https://kafiil.com/projects/design-video-and-audio-1"
+                    <a (click)="selectCategory(3)" style="border-bottom: initial"
                         class="link apply-filter category-filter " category_id="201"
                         category_slug="design-video-and-audio-1">
                         <div class="right">
@@ -72,7 +72,7 @@ add project </a>
                     </a>
                 </div>
                 <div style="border-bottom: 1px solid #DEE0E1;">
-                    <a style="border-bottom: initial" href="https://kafiil.com/projects/marketing-and-sales-2"
+                    <a (click)="selectCategory(4)" style="border-bottom: initial" 
                         class="link apply-filter category-filter " category_id="202"
                         category_slug="marketing-and-sales-2">
                         <div class="right">
@@ -83,8 +83,8 @@ add project </a>
                     </a>
                 </div>
                 <div style="border-bottom: 1px solid #DEE0E1;">
-                    <a style="border-bottom: initial"
-                        href="https://kafiil.com/projects/writing-content-creation-translation-and-languag-2"
+                    <a (click)="selectCategory(6)" style="border-bottom: initial"
+                     
                         class="link apply-filter category-filter " category_id="203"
                         category_slug="writing-content-creation-translation-and-languag-2">
                         <div class="right">
@@ -95,8 +95,8 @@ add project </a>
                     </a>
                 </div>
                 <div style="border-bottom: 1px solid #DEE0E1;">
-                    <a style="border-bottom: initial"
-                        href="https://kafiil.com/projects/training-education-and-remote-assistance-2"
+                    <a (click)="selectCategory(5)" style="border-bottom: initial"
+                       
                         class="link apply-filter category-filter " category_id="204"
                         category_slug="training-education-and-remote-assistance-2">
                         <div class="right">
@@ -154,20 +154,19 @@ Projects </div>
 <div class="left " >
 <div class="type-radio radio ">
 <label class="custom-radio" style="margin-left: 10px;">
-<input name="open-filter" type="radio" class="d-none open-filter" value="all" checked="">
+<input name="open-filter" type="radio" class="d-none open-filter" value="all" checked="" (change)="selectStatus(null)">
 <i></i>
 All </label>
 <label class="custom-radio ">
-<input name="open-filter" type="radio" class="d-none open-filter" value="open">
+<input name="open-filter" type="radio" class="d-none open-filter" value="open"  (change)="selectStatus(0)">
 <i></i>
 Open </label>
+<label class="custom-radio ">
+<input name="open-filter" type="radio" class="d-none open-filter" value="open" (change)="selectStatus(1)">
+<i></i>
+in progress </label>
 </div>
- <select id="sort_filter" class="timeline-sort select2-selection select2-selection--single" data-select2-id="select2-data-sort_filter" tabindex="-1" aria-hidden="true">
-<option value="latest" data-select2-id="select2-data-2-qwd6" class="select2-selection__rendered">Latest</option>
-<option value="oldest" class="select2-selection__rendered">Oldest</option>
-<option value="less_bids" class="select2-selection__rendered">Less Bids</option>
-<option value="more_bids" class="select2-selection__rendered">More Bids</option>
-</select>
+
 </div>
 </h2>
 <!-- third component -->
@@ -175,15 +174,33 @@ Open </label>
 
 
 <!-- just for test -->
-<div *ngFor="let project of projects" class="project" (click)="viewProjectDetails(project.id)">
+<div *ngFor="let project of filteredProjects" class="project" (click)="viewProjectDetails(project.id)">
   <div class="box-project">
     <div class="right">
-                   <a class="imge" href="https://kafiil.com/u/mohamed_mahmoud2" >
-<img class="" src="https://kafiil.s3.eu-central-1.amazonaws.com/media/avatar/b36e4b24c10ab686d40aeff2ea107642/c/5893348ef4f8c4cab842042df46c50b8-small.jpg" alt="">
+                   <a class="imge"  >
+<img class="" [src]='getSafeImageUrl(project.person?.imageUrl)' alt="">
 </a>
       <div class="info">
-<a href="https://kafiil.com/project/2-%D9%85%D8%B7%D9%84%D9%88%D8%A8-%D8%AA%D8%B5%D9%85%D9%8A%D9%85-%D9%85%D8%AC%D9%84%D8%A9-%D8%AA%D8%B9%D9%84%D9%8A%D9%85%D9%8A%D8%A9" class="name bold-text stopPropagation">
-          <span class="tag dark-bg">{{ project.statues }}</span>
+<a  class="name bold-text stopPropagation">
+<div>
+  <ng-container *ngIf="project?.statues === 0;">
+    <span class="tag dark-bg">Open</span>
+  </ng-container>
+
+  <ng-container *ngIf="project?.statues === 1;">
+    <span class="tag1 dark-bg">In Progress</span>
+  </ng-container>
+
+  <ng-container *ngIf="project?.statues === 2;">
+    <span class="tag2 dark-bg">Closed</span>
+  </ng-container>
+</div>
+
+
+
+
+
+
           {{ project.description }}
         </a>
         <div class="down">

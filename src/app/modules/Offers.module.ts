@@ -8,6 +8,7 @@ export class Offer {
 
   // Add the Freelance property with its corresponding type
   freelance: Freelance = new Freelance();
+  
 }
 
 export class Freelance {
@@ -23,4 +24,5 @@ export class Person {
   firstName: string = '';
   lastName: string = '';
   email: string = '';
+  imageUrl: string = '';
 }

@@ -14,10 +14,18 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
      
-       
-        <li class="nav-item ml-auto"> <!-- Updated class added -->
-          <a class="nav-link button2"  href="http://localhost:4200/login">Login</a>
-        </li>
+<div>
+  <!-- Add your other content here -->
+
+  <!-- Conditional rendering of the login or logout button -->
+  <li class="nav-item ml-auto">
+    <a *ngIf="isLoggedIn; else loginLink" class="nav-link button2" (click)="logout()">Logout</a>
+    <ng-template #loginLink>
+      <a class="nav-link button2" href="http://localhost:4200/login">Login</a>
+    </ng-template>
+  </li>
+</div>
+
         <li class="nav-item"> <!-- Updated class added -->
           <a class="nav-link button1" href="http://localhost:4200/register">New Account</a>
         </li>

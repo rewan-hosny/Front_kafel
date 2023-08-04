@@ -19,16 +19,34 @@ var ProjectDetailsComponent = /** @class */ (function () {
         this.projectDetails = new Project_module_1.Project();
         this.console = console;
         this.OfferDetails = [];
+        this.acceptanceStatus = null;
         this.createOffer = new CreateOffer_module_1.CreateOffer(); // Initialize createOffer with a new instance of CreateOffer
+        this.showBidSection = true;
     }
     ProjectDetailsComponent.prototype.ngOnInit = function () {
         var _this = this;
         // Retrieve the project ID from the route parameter
         this.route.params.subscribe(function (params) {
             _this.projectId = +params['id']; // Assuming the route parameter name is 'id'
+            // Load the 'showBidSection' value from browser storage when the component initializes
+            var storedShowBidSection = localStorage.getItem("showBidSection_" + _this.projectId);
+            if (storedShowBidSection !== null) {
+                _this.showBidSection = JSON.parse(storedShowBidSection);
+            }
             _this.getProjectDetails();
             _this.getOfferDetails();
         });
+    };
+    ProjectDetailsComponent.prototype.hideBidSection = function () {
+        this.showBidSection = false;
+        // Save the 'showBidSection' value to browser storage when it changes
+        localStorage.setItem("showBidSection_" + this.projectId, JSON.stringify(this.showBidSection));
+    };
+    // Rename the method to toggleBidSection
+    ProjectDetailsComponent.prototype.toggleBidSection = function () {
+        this.showBidSection = !this.showBidSection;
+        // Save the 'showBidSection' value to browser storage when it changes
+        localStorage.setItem("showBidSection_" + this.projectId, JSON.stringify(this.showBidSection));
     };
     ProjectDetailsComponent.prototype.getProjectDetails = function () {
         var _this = this;
@@ -52,6 +70,14 @@ var ProjectDetailsComponent = /** @class */ (function () {
         });
         ;
     };
+    ProjectDetailsComponent.prototype.getSafeImageUrl = function (base64String) {
+        if (base64String) {
+            return 'data:image/jpeg;base64,' + base64String;
+        }
+        else {
+            return ' ';
+        }
+    };
     ProjectDetailsComponent.prototype.getOfferDetails = function () {
         var _this = this;
         this.offerService.GetOffer(this.projectId).subscribe(function (data) {
@@ -62,6 +88,26 @@ var ProjectDetailsComponent = /** @class */ (function () {
             // Handle the error if the API call fails
             console.error('Error fetching project details:', error);
         });
+    };
+    ProjectDetailsComponent.prototype.AcceptOffer = function (id) {
+        var _this = this;
+        this.offerService.AcceptProject(id).subscribe(function (response) {
+            console.log("Accepted offer successfully.");
+            _this.toggleBidSection();
+            _this.getOfferDetails();
+            _this.acceptanceStatus = "Offer accepted! You have accepted the offer with ID " + response.id + ".";
+        }, function (error) {
+            console.log("Error accepting offer: " + error);
+            if (error.status === 400 && error.error === 'Invalid request. You have already accepted an offer for this project.') {
+                _this.acceptanceStatus = 'Invalid request! You have already accepted an offer for this project.';
+            }
+            else {
+                _this.acceptanceStatus = 'Error accepting offer. An error occurred while accepting the offer. Please try again later.';
+            }
+        });
+    };
+    ProjectDetailsComponent.prototype.viewProjectDetails = function (id) {
+        this.router.navigate(['/project-details', id]);
     };
     ProjectDetailsComponent = __decorate([
         core_1.Component({

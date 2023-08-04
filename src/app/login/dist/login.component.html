@@ -34,6 +34,9 @@ Forgotten Password?</a>
 <button type="submit" class="theme-btn primary-btn w-100 buttonlog">
 Login </button>
 </form>
+<div class="error" *ngIf="errorMessages">
+  <p class="error-p">{{ errorMessages }}</p>
+</div>
 
 
    <p class="register">

@@ -18,12 +18,14 @@ var project_details_component_1 = require("./project-details/project-details.com
 var control_panel_component_1 = require("./control-panel/control-panel.component");
 var add_project_component_1 = require("./add-project/add-project.component");
 var profile_setting_component_1 = require("./profile-setting/profile-setting.component");
+var manage_project_component_1 = require("./manage-project/manage-project.component");
 var routes = [
     { path: 'home', component: home_component_1.HomeComponent },
     { path: 'login', component: login_component_1.LoginComponent },
     { path: 'register', component: register_component_1.RegisterComponent },
     { path: 'project', component: project_component_1.ProjectComponent },
     { path: 'project-details/:id', component: project_details_component_1.ProjectDetailsComponent },
+    { path: 'manageProject/:id', component: manage_project_component_1.ManageProjectComponent },
     { path: 'controlPanel', component: control_panel_component_1.ControlPanelComponent },
     { path: 'addProject', component: add_project_component_1.AddProjectComponent },
     { path: 'contests', component: contests_component_1.ContestsComponent },

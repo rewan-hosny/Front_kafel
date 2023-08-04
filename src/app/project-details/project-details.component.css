@@ -193,6 +193,12 @@ text-decoration: none!important;
        padding: 20px 30px;
 }
 
+.offer-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 /* add your bid   */
 .group-input {
     margin-bottom: 20px;
@@ -230,4 +236,21 @@ text-decoration: none!important;
     padding: 10px;
     border-radius: 8px;
     border: none;
+}
+
+
+/*button accept */
+/* Example CSS to style the button */
+.accept-button {
+    padding: 10px 20px;
+    border: 2px solid #1dbf73; /* Replace with your desired border color */
+    background-color: #fff; /* Replace with your desired background color */
+    color: #1dbf73; /* Replace with your desired text color */
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.accept-button:hover {
+    background-color: #1dbf73; /* Replace with your desired background color on hover */
+    color: #fff; /* Replace with your desired text color on hover */
 }

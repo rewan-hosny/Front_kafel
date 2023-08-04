@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import Swiper from 'swiper';
 
 @Component({
@@ -61,6 +61,7 @@ export class HomeComponent implements OnInit {
 //     // Add more sections as needed
 //   ];
   
+   isLoggedIn: boolean = false;
   services = [
        [
       { title: 'explore services', description: 'browse the services and compare them to choose the most suitable for you' ,image:'/assets/images/search.svg'},
@@ -88,7 +89,7 @@ currentTab = 0; // Index of the currently active tab
 
   currentSectionIndex = 0; // Index of the currently displayed section
 
-  constructor() { }
+  
 
   ngOnInit() {
     // Initialize the Swiper carousel
@@ -105,6 +106,10 @@ currentTab = 0; // Index of the currently active tab
         clickable: true,
       },
     });
+
+     const isLoggedInString = localStorage.getItem("isLoggedIn");
+    this.isLoggedIn = isLoggedInString ? JSON.parse(isLoggedInString) : false;
+    
   }
 
 toggleSection(direction: string) {

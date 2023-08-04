@@ -9,11 +9,15 @@ exports.__esModule = true;
 var core_1 = require("@angular/core");
 var login_module_1 = require("../modules/login.module");
 var LoginComponent = /** @class */ (function () {
-    function LoginComponent(authService, router, jwtHelper) {
+    function LoginComponent(cdr, authService, sharedService, router, jwtHelper) {
+        this.cdr = cdr;
         this.authService = authService;
+        this.sharedService = sharedService;
         this.router = router;
         this.jwtHelper = jwtHelper;
+        this.isLoggedIn = false;
         this.newItem = new login_module_1.Login();
+        this.errorMessages = '';
     }
     LoginComponent.prototype.login = function () {
         var _this = this;
@@ -27,13 +31,29 @@ var LoginComponent = /** @class */ (function () {
             // Store user information in local storage
             localStorage.setItem('name', decodedToken["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"]);
             localStorage.setItem('userid', decodedToken["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"]);
+            _this.isLoggedIn = true;
+            // Store isLoggedIn in local storage
+            localStorage.setItem('isLoggedIn', "true");
+            _this.sharedService.setLoggedInStatus(_this.isLoggedIn);
             // Redirect to the home page
+            _this.cdr.detectChanges();
             _this.router.navigate(['/home']);
         }, function (error) {
-            console.log(error);
+            console.error('Login failed!', error);
+            _this.errorMessages = error;
             console.log(error.error.errors); // Log the specific error messages, if available
             // Handle the error as needed
         });
+    };
+    LoginComponent.prototype.logout = function () {
+        // Clear user information from local storage and navigate back to login page
+        localStorage.removeItem('Authorization');
+        localStorage.removeItem('name');
+        localStorage.removeItem('userid');
+        // Set isLoggedIn to false and remove it from local storage
+        this.isLoggedIn = false;
+        localStorage.removeItem('isLoggedIn');
+        this.router.navigate(['/login']);
     };
     LoginComponent = __decorate([
         core_1.Component({

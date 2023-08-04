@@ -13,8 +13,13 @@ var RegisterComponent = /** @class */ (function () {
         this.authService = authService;
         this.router = router;
         this.jwtHelper = jwtHelper;
+        this.errorMessage = '';
+        this.title = '';
         this.newItem = new person_module_1.Person(); // Initialize the 'newItem' with a new instance of 'Person'
+        this.registrationErrors = [];
+        this.errorMessages = {}; // Initialize an empty object to store the error messages
     }
+    // Rename the method to avoid conflicts with the service method
     RegisterComponent.prototype.register = function () {
         var _this = this;
         this.authService.register(this.newItem).subscribe(function (response) {
@@ -27,12 +32,20 @@ var RegisterComponent = /** @class */ (function () {
             // Store user information in local storage
             localStorage.setItem('name', decodedToken["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"]);
             localStorage.setItem('userid', decodedToken["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"]);
+            _this.registrationResponse = response;
+            _this.registrationError = null; // Clear any previous error when successful
             // Redirect to the home page
             _this.router.navigate(['/home']);
         }, function (error) {
+            _this.registrationError = error;
+            _this.title = error.error.error.title;
+            _this.errorMessages = error.error.error.errors;
             console.log(error);
-            console.log(error.error.errors); // Log the specific error messages, if available
-            // Handle the error as needed
+            console.log(error.error);
+            console.log(error.error.error.title);
+            console.log(error.error.error.errors);
+            console.log(error.response);
+            console.log(Object.keys(error));
         });
     };
     RegisterComponent = __decorate([

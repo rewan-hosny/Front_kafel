@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { CreateOffer } from '../modules/CreateOffer.module';
 import { Observable } from 'rxjs';
+import { Message } from '../modules/Message.module';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,10 @@ import { Observable } from 'rxjs';
 export class OfferServicesService {
   private Offer = "Offer/Offers";
   private GetCategory = "Offer/allCategory";
+  private Accept = "Offer/AcceptProject";
+  private PostMessage = "Message/Message";
+  
+  
   
     constructor(private http: HttpClient, private jwtHelper: JwtHelperService, private localStorage: LocalStorageService, private router: Router) { }
 
@@ -47,6 +52,57 @@ export class OfferServicesService {
      `${environment.apiUrl}/${this.GetCategory}`
     );
     }
+  
+  
+  
+      GetAcceptProject(id: number) {
+          const token = localStorage.getItem('Authorization');
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      })
+    };
+    return this.http.get(
+     `${environment.apiUrl}/${this.Accept}/${id}`,httpOptions
+    );
+      }
+  
+  
+     GetMessages(id: number) {
+          const token = localStorage.getItem('Authorization');
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      })
+    };
+    return this.http.get(
+     `${environment.apiUrl}/${this.PostMessage}/${id}`,httpOptions
+    );
+    }
+    AcceptProject(id: number): Observable<any> {
+        const token = localStorage.getItem('Authorization');
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      })
+    };
+    return this.http.post(`${environment.apiUrl}/${this.Accept}/${id}`, {},httpOptions);
+    }
+  
+   PotsMessage(message: Message, id: number): Observable<any> {
+        const token = localStorage.getItem('Authorization');
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      })
+    };
+    return this.http.post(`${environment.apiUrl}/${this.PostMessage}/${id}`, message,httpOptions);
+  }
+  
 
 
 }

@@ -9,6 +9,8 @@ exports.__esModule = true;
 var http_1 = require("@angular/common/http");
 var core_1 = require("@angular/core");
 var environment_1 = require("src/environments/environment");
+var rxjs_1 = require("rxjs");
+var operators_1 = require("rxjs/operators");
 var AuthServicesService = /** @class */ (function () {
     function AuthServicesService(http, jwtHelper, localStorage, router) {
         this.http = http;
@@ -24,10 +26,28 @@ var AuthServicesService = /** @class */ (function () {
         this.getImage = "Auth/Image";
     }
     AuthServicesService.prototype.register = function (person) {
-        return this.http.post(environment_1.environment.apiUrl + "/" + this.registerr, person);
+        return this.http.post(environment_1.environment.apiUrl + "/" + this.registerr, person).pipe(operators_1.catchError(this.handleError));
+    };
+    AuthServicesService.prototype.handleError = function (error) {
+        if (error.status === 400) {
+            // A client-side or network error occurred. Handle it accordingly.
+            console.log(error);
+            return rxjs_1.throwError(function () { return ({
+                error: error
+            }); });
+        }
+        else {
+            // The backend returned an unsuccessful response code.
+            // The response body may contain clues as to what went wrong.
+            return rxjs_1.throwError(function () { return new Error(error.error); });
+        }
+        // Return an observable with a user-facing error message.
+        return rxjs_1.throwError(function () { return new Error('Something bad happened; please try again later.', error.error.errors); });
     };
     AuthServicesService.prototype.login = function (login) {
-        return this.http.post(environment_1.environment.apiUrl + "/" + this.loginn, login);
+        return this.http.post(environment_1.environment.apiUrl + "/" + this.loginn, login).pipe(operators_1.catchError(function (error) {
+            return rxjs_1.throwError(error.error);
+        }));
     };
     AuthServicesService.prototype.CompleteProfile = function (completeprofile) {
         var token = localStorage.getItem('Authorization');

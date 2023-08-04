@@ -135,9 +135,25 @@
   
     
 }
- .right .name .tag {
+ .right .name .tag2 {
     padding: 1px 8px;
    background-color: #6c757d!important;
+    font-size: 10px;
+    color: #fff;
+    border-radius: 3px;
+    line-height: 1;
+}
+.right .name .tag {
+    padding: 1px 8px;
+   background-color: #1dbf73!important;
+    font-size: 10px;
+    color: #fff;
+    border-radius: 3px;
+    line-height: 1;
+}
+.right .name .tag1 {
+    padding: 1px 8px;
+   background-color: #c07550!important;
     font-size: 10px;
     color: #fff;
     border-radius: 3px;

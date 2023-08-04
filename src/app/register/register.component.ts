@@ -3,7 +3,7 @@ import { AuthServicesService } from '../services/auth-services.service';
 
 import { Person } from '../modules/person/person.module';
 
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { LocalStorageService } from 'ngx-webstorage';
@@ -11,6 +11,7 @@ import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms'; // Import the FormsModule
 import { NgModule } from '@angular/core';
+import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -18,36 +19,55 @@ import { NgModule } from '@angular/core';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
- newItem: Person = new Person(); // Initialize the 'newItem' with a new instance of 'Person'
+  errorMessage: string = '';
+   registrationResponse: any;
+  registrationError: any;
+  title: string = '';
+  newItem: Person = new Person(); // Initialize the 'newItem' with a new instance of 'Person'
+  registrationErrors: string[] = [];
+    errorMessages: any = {}; // Initialize an empty object to store the error messages
 
-  constructor(private authService: AuthServicesService, private router: Router, private jwtHelper: JwtHelperService,) { }
-register(): void {
-  this.authService.register(this.newItem).subscribe(
-    (response: any) => {
-      // Handle the successful response here
-      console.log(response);
 
-      // Store the JWT token in local storage (as a string)
-      localStorage.setItem('Authorization', response.token);
+  constructor(private authService: AuthServicesService, private router: Router, private jwtHelper: JwtHelperService) { }
 
-      // Decode the JWT token to get user information
-      const decodedToken = this.jwtHelper.decodeToken(response.token);
+  // Rename the method to avoid conflicts with the service method
+  register(): void {
+    this.authService.register(this.newItem).subscribe(
+      (response: any) => {
+        // Handle the successful response here
+        console.log(response);
 
-      // Store user information in local storage
-      localStorage.setItem('name', decodedToken["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"]);
-      localStorage.setItem('userid', decodedToken["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"]);
+        // Store the JWT token in local storage (as a string)
+        localStorage.setItem('Authorization', response.token);
 
-      // Redirect to the home page
-      this.router.navigate(['/home']);
-    },
-    (error: any) => {
-      console.log(error);
-      console.log(error.error.errors); // Log the specific error messages, if available
-      // Handle the error as needed
-    }
-  );
-}
+        // Decode the JWT token to get user information
+        const decodedToken = this.jwtHelper.decodeToken(response.token);
 
+        // Store user information in local storage
+        localStorage.setItem('name', decodedToken["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"]);
+        localStorage.setItem('userid', decodedToken["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"]);
+
+  
+
+        this.registrationResponse = response;
+        this.registrationError = null; // Clear any previous error when successful
+
+              // Redirect to the home page
+        this.router.navigate(['/home']);
+      },
+      (error) => {
+        this.registrationError = error;
+        this.title = error.error.error.title;
+        this.errorMessages = error.error.error.errors;
+        console.log(error);
+             console.log(error.error);
+        console.log( error.error.error.title);
+        console.log(error.error.error.errors);
+              console.log(error.response);
+        console.log(Object.keys(error));
+      }
+    );
+  }
 
 
 }

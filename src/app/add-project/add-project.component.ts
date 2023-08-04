@@ -17,7 +17,8 @@ export class AddProjectComponent {
   AllCategories: AllCategories[] = [];
 
 
-  CreateProject:Project= new Project();
+  CreateProject: Project = new Project();
+  
 
   constructor(private http: HttpClient,  private router: Router, private offerService:OfferServicesService,   private projectService: ProjectServicesService , private route: ActivatedRoute,) { }
  ngOnInit(): void {

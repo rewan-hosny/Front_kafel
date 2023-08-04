@@ -15,21 +15,45 @@ import { CreateOffer } from '../modules/CreateOffer.module';
   styleUrls: ['./project-details.component.css']
 })
 export class ProjectDetailsComponent {
- projectId!: number; // Property to store the project ID
+  projectId!: number;
+  id!: number; // Property to store the project ID
   projectDetails:Project= new Project();
      console = console;
   OfferDetails: Offer[] = [];
+    acceptanceStatus: string | null = null; 
    createOffer: CreateOffer = new CreateOffer(); // Initialize createOffer with a new instance of CreateOffer
-
+showBidSection: boolean = true;
   constructor(private http: HttpClient,  private router: Router, private projectService: ProjectServicesService,private offerService:OfferServicesService , private route: ActivatedRoute,) { }
-  ngOnInit(): void {
-    // Retrieve the project ID from the route parameter
-    this.route.params.subscribe(params => {
-      this.projectId = +params['id']; // Assuming the route parameter name is 'id'
-      this.getProjectDetails();
-      this.getOfferDetails();
-    });
-  }
+ ngOnInit(): void {
+  // Retrieve the project ID from the route parameter
+  this.route.params.subscribe(params => {
+    this.projectId = +params['id']; // Assuming the route parameter name is 'id'
+    
+
+    // Load the 'showBidSection' value from browser storage when the component initializes
+    const storedShowBidSection = localStorage.getItem(`showBidSection_${this.projectId}`);
+    if (storedShowBidSection !== null) {
+      this.showBidSection = JSON.parse(storedShowBidSection);
+    }
+
+    this.getProjectDetails();
+    this.getOfferDetails();
+  });
+}
+
+hideBidSection() {
+  this.showBidSection = false;
+  // Save the 'showBidSection' value to browser storage when it changes
+  localStorage.setItem(`showBidSection_${this.projectId}`, JSON.stringify(this.showBidSection));
+}
+
+// Rename the method to toggleBidSection
+toggleBidSection() {
+  this.showBidSection = !this.showBidSection;
+  // Save the 'showBidSection' value to browser storage when it changes
+  localStorage.setItem(`showBidSection_${this.projectId}`, JSON.stringify(this.showBidSection));
+}
+
   getProjectDetails() {
     // Call the GetOneProject function with the project ID
     this.projectService.GetOneProject(this.projectId).subscribe(
@@ -57,6 +81,14 @@ export class ProjectDetailsComponent {
   );;
 
     
+  }
+    getSafeImageUrl(base64String: string | undefined): string {
+  if (base64String) {
+    return 'data:image/jpeg;base64,' + base64String;
+  } else {
+   
+    return ' ';
+  }
 }
   getOfferDetails(){
   
@@ -72,6 +104,27 @@ export class ProjectDetailsComponent {
       });
   }
 
+    AcceptOffer(id: number): void {
+    this.offerService.AcceptProject(id).subscribe(
+      (response: any) => {
+        console.log(`Accepted offer successfully.`);
+  this.toggleBidSection(); 
+        this.getOfferDetails();
+        this.acceptanceStatus = `Offer accepted! You have accepted the offer with ID ${response.id}.`;
+      },
+      (error: any) => {
+        console.log(`Error accepting offer: ${error}`);
+        if (error.status === 400 && error.error === 'Invalid request. You have already accepted an offer for this project.') {
+          this.acceptanceStatus = 'Invalid request! You have already accepted an offer for this project.';
+        } else {
+          this.acceptanceStatus = 'Error accepting offer. An error occurred while accepting the offer. Please try again later.';
+        }
+      }
+    );
+    }
+    viewProjectDetails(id: number) {
+    this.router.navigate(['/project-details', id]);
+  }
 
 
 }

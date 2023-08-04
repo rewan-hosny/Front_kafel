@@ -1,14 +1,16 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders,HttpErrorResponse  } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { LocalStorageService } from 'ngx-webstorage';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+
 import { Person } from '../modules/person/person.module';
 import { Login } from '../modules/login.module';
 import { CompleteMyProfile } from '../modules/CompleteProfile.module';
 import { AddImage } from '../modules/AddImge.module';
+import { Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 
 
 @Injectable({
@@ -23,16 +25,42 @@ export class AuthServicesService {
   private UpdatePerson = "Auth/UpdateUser";
   private getImage = "Auth/Image";
 
+
   constructor(private http: HttpClient, private jwtHelper: JwtHelperService, private localStorage: LocalStorageService, private router: Router) { }
   register(person: Person): Observable<any> {
-    return this.http.post(`${environment.apiUrl}/${this.registerr}`, person);
+     return this.http.post(`${environment.apiUrl}/${this.registerr}`, person).pipe(
+      catchError(this.handleError)
+    );
+
   }
-  
+
+  private handleError(error: HttpErrorResponse) {
+  if (error.status === 400) {
+    // A client-side or network error occurred. Handle it accordingly.
+console.log(error)
+    return throwError(() => ({
+error:error
+     }));
+  }
+  else {
+    // The backend returned an unsuccessful response code.
+    // The response body may contain clues as to what went wrong.
+ return throwError(()=>new Error( error.error));
+  }
+  // Return an observable with a user-facing error message.
+  return throwError(() => new Error('Something bad happened; please try again later.',error.error.errors));
+}
+
   
   
   login(login: Login): Observable<any> {
-    return this.http.post(`${environment.apiUrl}/${this.loginn}`, login);
+    return this.http.post(`${environment.apiUrl}/${this.loginn}`, login).pipe(
+      catchError((error: HttpErrorResponse) => {
+        return throwError(error.error);
+      })
+    );
   }
+  
   
     
   CompleteProfile(completeprofile: CompleteMyProfile): Observable<any> {

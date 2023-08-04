@@ -11,6 +11,7 @@ import { ProjectDetailsComponent } from './project-details/project-details.compo
 import { ControlPanelComponent } from './control-panel/control-panel.component';
 import { AddProjectComponent } from './add-project/add-project.component';
 import { ProfileSettingComponent } from './profile-setting/profile-setting.component';
+import { ManageProjectComponent } from './manage-project/manage-project.component';
 
 const routes: Routes = [
 
@@ -19,6 +20,7 @@ const routes: Routes = [
         { path: 'register', component: RegisterComponent },
   { path: 'project', component: ProjectComponent  },
   { path: 'project-details/:id', component: ProjectDetailsComponent },
+    { path: 'manageProject/:id', component: ManageProjectComponent },
   { path: 'controlPanel', component: ControlPanelComponent },
   { path: 'addProject', component: AddProjectComponent },
   {path:'contests',component:ContestsComponent},

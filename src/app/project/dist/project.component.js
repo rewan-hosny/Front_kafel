@@ -12,39 +12,64 @@ var ProjectComponent = /** @class */ (function () {
         this.http = http;
         this.router = router;
         this.projectService = projectService;
+        this.filteredProjects = [];
+        this.categoriesProjects = [];
+        this.selectedCategoryId = null; // Property to store the selected category ID
+        this.selectedStatus = null;
         this.projects = [];
     }
-    // In your component.ts file
-    // projects: any[] = [
-    //   {
-    //     title: "need developer to do project .net",
-    //     status: "Completed",
-    //     user: "rewan hosny",
-    //     timestamp: "1 year ago",
-    //     priceRange: "$300 - $500"
-    //   },
-    //     {
-    //     title: "need developer to do project .net",
-    //     status: "Completed",
-    //     user: "rewan hosny",
-    //     timestamp: "1 year ago",
-    //     priceRange: "$250 - $500"
-    //   },
-    //   // Add more project data objects here
-    // ];
     ProjectComponent.prototype.viewProjectDetails = function (id) {
         this.router.navigate(['/project-details', id]);
     };
     ProjectComponent.prototype.ngOnInit = function () {
         this.AllProject();
+        this.filteredProjects = this.projects;
+    };
+    ProjectComponent.prototype.filterProjectsAndCategory = function () {
+        var selectedCategoryId = this.selectedCategoryId;
+        var selectedStatus = this.selectedStatus;
+        if (selectedCategoryId === null && selectedStatus === null) {
+            // If both selectedCategoryId and selectedStatus are null, show all projects
+            this.filteredProjects = this.projects;
+        }
+        else if (selectedCategoryId === null) {
+            // If selectedCategoryId is null, filter projects only by selectedStatus
+            this.filteredProjects = this.projects.filter(function (project) { return project.statues === selectedStatus; });
+        }
+        else if (selectedStatus === null) {
+            // If selectedStatus is null, filter projects only by selectedCategoryId
+            this.filteredProjects = this.projects.filter(function (project) { return project.categoryId === selectedCategoryId; });
+        }
+        else {
+            // Filter projects based on both selectedCategoryId and selectedStatus
+            this.filteredProjects = this.projects.filter(function (project) { return project.categoryId === selectedCategoryId && project.statues === selectedStatus; });
+        }
+    };
+    ProjectComponent.prototype.selectCategory = function (categoryId) {
+        this.selectedCategoryId = categoryId;
+        this.filterProjectsAndCategory();
+    };
+    ProjectComponent.prototype.selectStatus = function (status) {
+        this.selectedStatus = status;
+        this.filterProjectsAndCategory();
     };
     ProjectComponent.prototype.AllProject = function () {
         var _this = this;
         this.projectService.getAllProject().subscribe(function (result) {
+            _this.filteredProjects = result;
+            _this.categoriesProjects = result;
             _this.projects = result;
         }, function (error) {
             console.log(error);
         });
+    };
+    ProjectComponent.prototype.getSafeImageUrl = function (base64String) {
+        if (base64String) {
+            return 'data:image/jpeg;base64,' + base64String;
+        }
+        else {
+            return '/assets/images/profile.png';
+        }
     };
     ProjectComponent = __decorate([
         core_1.Component({

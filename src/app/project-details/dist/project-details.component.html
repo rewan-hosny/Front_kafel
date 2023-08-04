@@ -29,9 +29,10 @@
 </div>
     </div>
 
-    <div class="left">
+<div class="left">
+      
+</div>
 
-    </div>
  
 </div>
 <div class="row">
@@ -60,7 +61,7 @@ Project Details </p>
     
 </div>
 <!-- add your bids -->
-<div class="block">
+<div class="block" *ngIf="showBidSection">
 <div class="block-head">
 <p class="title">
 <i class="fas fa-bullhorn"></i>
@@ -197,6 +198,10 @@ Bid Details </label>
 </div>
 </div>
 
+ <!-- Display acceptance status -->
+    <div *ngIf="acceptanceStatus">
+      <p>{{ acceptanceStatus }}</p>
+    </div>
 <!-- end your bids -->
 <!-- start bids -->
 <div class="block">
@@ -206,7 +211,7 @@ Bid Details </label>
 Bids </p>
 </div>
 <!-- one offer -->
-        <div *ngFor="let OfferDetail of OfferDetails" class="offer-box ">
+        <div *ngFor="let OfferDetail of OfferDetails" (click)="viewProjectDetails(OfferDetail.projectId)" class="offer-box ">
         <div class="offer-head">
         <div class="right">
         <a href="https://kafiil.com/u/mohamedkamal10" class="imge">
@@ -242,13 +247,18 @@ Bids </p>
         </div>
         </div>
         </div>
-        <div class="left">
+        <div class="left"  *ngIf="showBidSection">
+           <button  (click)="AcceptOffer(OfferDetail.id)" class="accept-button">
+        <i class="fas fa-check-circle"></i> Accept
+    </button>
+  
         </div>
         </div>
         <p class="offer-desc" style="word-wrap:break-word;">
             {{OfferDetail.description}}
         </p>
         </div>
+        
 <!-- the second offer -->
      <div class="offer-box ">
         <div class="offer-head">
@@ -286,6 +296,10 @@ Bids </p>
         </div>
         </div>
         <div class="left">
+
+              <button  class="accept-button">
+        <i class="fas fa-check-circle"></i> Accept
+    </button>
         </div>
         </div>
         <p class="offer-desc" style="word-wrap:break-word;">

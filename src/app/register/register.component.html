@@ -1,30 +1,60 @@
 <div class="container">
   <div class="row login-box">
     <div class="col-12 col-lg-6 p-0">
+<div *ngIf="errorMessages?.Email">
+  <p *ngFor="let errorMessage of errorMessages.Email">{{ errorMessage }}</p>
+</div>
+
+<!-- Show the error message if there is an error -->
+<div *ngIf="registrationError">
+  <h2>Error during Registration:</h2>
+  
+  <p>{{ title }}</p>
+</div>
+
+
       <div class="right">
         <p class="welcome">Create A New Account</p>
         <form (ngSubmit)="register()" >
+<!-- your.component.html -->
+<!-- your.component.html -->
+
+
+
           <div class="row input-register">
             <div class="col-12 col-sm-6">
               <div class="group-input">
                 <label class="label">First Name</label>
                 <input required="" type="text" name="first_name" class="input" placeholder="First Name" [(ngModel)]="newItem.firstName">
               </div>
+                                            <div *ngIf="errorMessages.FirstName">
+  <p>{{ errorMessages.FirstName[0] }}</p>
+</div>
+        
             </div>
             <div class="col-12 col-sm-6">
               <div class="group-input">
                 <label class="label">Last Name</label>
                 <input required="" type="text" name="last_name" class="input" placeholder="Last Name" [(ngModel)]="newItem.lastName">
               </div>
+                              <div *ngIf="errorMessages.LastName">
+  <p>{{ errorMessages.LastName[0] }}</p>
+</div>
             </div>
           </div>
+
+
           <div class="input-register">
             <label class="label">Email</label>
             <input required="" type="email" name="email" class="input" placeholder="Email" [(ngModel)]="newItem.email">
           </div>
+                    <div *ngIf="errorMessages.Email">
+  <p>{{ errorMessages.Email[0] }}</p>
+</div>
           <div class="row input-register">
             <div class="col-12 col-sm-6">
               <div class="group-input">
+
                 <label class="label">Password</label>
                 <input required="" type="password" name="password" class="input" placeholder=newItem.password [(ngModel)]="newItem.password">
               </div>
@@ -36,6 +66,9 @@
               </div>
             </div> -->
           </div>
+                          <div *ngIf="errorMessages.password">
+  <p>{{ errorMessages.password[0] }}</p>
+</div>
        <div class="top">
   <div class="button-container">
     <button type="submit" class="theme-btn primary-btn buttonlog">Register as Buyer</button>
