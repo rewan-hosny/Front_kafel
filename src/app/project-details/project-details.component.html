@@ -3,9 +3,9 @@
 <div class="first-section">
        <div class="right">
 
-<a href="https://kafiil.com/u/algyal_alrbaa" class="imge">
+<a  class="imge">
 
-<img src="https://kafiil.s3.eu-central-1.amazonaws.com/media/avatar/335ccb9a43cbe1c351afc62f1776010c/c/d124e23f07dfde581dc6a51d459b1fde-small.jpg" alt="">
+<img class="" [src]="'data:image/jpeg;base64,' + projectDetails.person?.imageUrl" alt="">
 
 </a>
 <div class="info">
@@ -62,6 +62,7 @@ Project Details </p>
 </div>
 <!-- add your bids -->
 <div class="block" *ngIf="showBidSection">
+    <div *ngIf="messagge?.freelance=== 'yes'">
 <div class="block-head">
 <p class="title">
 <i class="fas fa-bullhorn"></i>
@@ -69,7 +70,7 @@ Add Your Bid &nbsp;
 <span class="little-info">(Remaining Bids: 5)</span>
 </p>
 </div>
-<div class="has-padding">
+<div  class="has-padding">
 <p class="desc-font">
 </p>
 <form     (ngSubmit)="CreateOffers()"  >
@@ -197,6 +198,7 @@ Bid Details </label>
 </form>
 </div>
 </div>
+</div>
 
  <!-- Display acceptance status -->
     <div *ngIf="acceptanceStatus">
@@ -211,11 +213,11 @@ Bid Details </label>
 Bids </p>
 </div>
 <!-- one offer -->
-        <div *ngFor="let OfferDetail of OfferDetails" (click)="viewProjectDetails(OfferDetail.projectId)" class="offer-box ">
+        <div *ngFor="let OfferDetail of OfferDetails"  class="offer-box ">
         <div class="offer-head">
         <div class="right">
-        <a href="https://kafiil.com/u/mohamedkamal10" class="imge">
-        <img class="" data-cfsrc="https://kafiil.s3.eu-central-1.amazonaws.com/media/avatar/b6cd8396b4351e8648cf218a51a4290b/c/e13426f9790e2fc410d739d9bf7d5f64-small.jpg" alt="" src="https://kafiil.s3.eu-central-1.amazonaws.com/media/avatar/b6cd8396b4351e8648cf218a51a4290b/c/e13426f9790e2fc410d739d9bf7d5f64-small.jpg">
+        <a  class="imge">
+<img class="" [src]="'data:image/jpeg;base64,' + OfferDetail.freelance.person.imageUrl" alt="">
         </a>
         <div class="info">
         <p class="name">
@@ -247,12 +249,12 @@ Bids </p>
         </div>
         </div>
         </div>
-        <div class="left"  *ngIf="showBidSection">
-           <button  (click)="AcceptOffer(OfferDetail.id)" class="accept-button">
-        <i class="fas fa-check-circle"></i> Accept
-    </button>
-  
-        </div>
+    <div class="left" *ngIf="showBidSection && person?.id ===projectDetails?.personId">
+  <button (click)="AcceptOffer(OfferDetail.id)" class="accept-button">
+    <i class="fas fa-check-circle"></i> Accept
+  </button>
+</div>
+
         </div>
         <p class="offer-desc" style="word-wrap:break-word;">
             {{OfferDetail.description}}
@@ -260,7 +262,7 @@ Bids </p>
         </div>
         
 <!-- the second offer -->
-     <div class="offer-box ">
+     <!-- <div class="offer-box ">
         <div class="offer-head">
         <div class="right">
         <a href="https://kafiil.com/u/mohamedkamal10" class="imge">
@@ -305,7 +307,7 @@ Bids </p>
         <p class="offer-desc" style="word-wrap:break-word;">
         سوف اقوم بارسال المتابعين لك علي الفور فقط تواصل معي سوف اكون سعيدا جدا بالعمل معك....
         </p>
-        </div>
+        </div> -->
 </div>
 <!-- end bids -->
     </div>
@@ -322,9 +324,9 @@ Project Owner </p>
             </div>
             <div class="block-body">
                 <div class="project-owner">
-                 <a href="https://kafiil.com/u/algyal_alrbaa" class="imge">
+                 <a class="imge">
 
-<img src="https://kafiil.s3.eu-central-1.amazonaws.com/media/avatar/335ccb9a43cbe1c351afc62f1776010c/c/d124e23f07dfde581dc6a51d459b1fde-small.jpg" alt="">
+<img class="" [src]="'data:image/jpeg;base64,' + projectDetails.person?.imageUrl" alt="">
 
 </a>
 <div class="info">
@@ -356,10 +358,8 @@ Project Info </p>
             <div class="block-body">
             <table class="info-table">
             <tbody>
-            <tr> <td> <i class="fas fa-clock"></i> Publishing Date </td> <td> {{projectDetails.description}} </td> </tr>
-            <tr><td><i class="fas fa-money-bill-alt"></i>
-            Budget </td><td>$25 - $50</td>  </tr>
-          
+            <tr> <td> <i class="fas fa-clock"></i> Publishing Date </td> <td> {{projectDetails.dueDate}} </td> </tr>
+            
          
             <tr><td><i class="fas fa-money-bill-alt"></i> Bids Average </td>
             <td> {{"From  "+ projectDetails.fromPrice +" To  "+ projectDetails.toPrice}}</td></tr>
@@ -370,6 +370,10 @@ Project Info </p>
 </div>
     
 </div>
+<div *ngIf="!showBidSection || messagge?.freelance === 'yes'">
+  <button class="button" (click)="viewProjectDetails(projectDetails.id)">Manage Project</button>
+</div>
+
     </div>
 
 

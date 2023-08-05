@@ -1,81 +1,89 @@
 <section>
 <div class="container">
     <div class="row">
+
+ 
+
     <div class="col-12 col-lg-8" >
 <div class="block">
-     <div class="offer-box ">
-        <div class="offer-head">
-        <div class="right">
-        <a href="https://kafiil.com/u/mohamedkamal10" class="imge">
-        <img class="" data-cfsrc="https://kafiil.s3.eu-central-1.amazonaws.com/media/avatar/b6cd8396b4351e8648cf218a51a4290b/c/e13426f9790e2fc410d739d9bf7d5f64-small.jpg" alt="" src="https://kafiil.s3.eu-central-1.amazonaws.com/media/avatar/b6cd8396b4351e8648cf218a51a4290b/c/e13426f9790e2fc410d739d9bf7d5f64-small.jpg">
-        </a>
-        <div class="info">
-        <p class="name">
-        <a class="black-anchor" href="https://kafiil.com/u/mohamedkamal10">{{acceptoffer?.offers?.freelance?.person?.firstName}}</a>
-        <span class="stars">
-        <i class="fas fa-star "></i>
-        <i class="fas fa-star "></i>
-        <i class="fas fa-star "></i>
-        <i class="fas fa-star "></i>
-        <i class="fas fa-star "></i>
-        </span>
-        <span class="small-text">
-        0.0
-        <span class="hint-text">
-        (0)
-        </span>
-        </span>
-        </p>
-        <div class="date-time">
-        <span class="date">
-        <i class="fas fa-briefcase"></i>
-        {{ acceptoffer?.offers?.freelance?.skills}}
-        </span>
-      
-        </div>
-        </div>
-        </div>
-    
-        </div>
-        <p class="offer-desc" style="word-wrap:break-word;">
-      {{acceptoffer?.offers?.description}}
-        </p>
-        </div>
+   
 </div>
  
   
 
-                <div class="card">
-                    <div class="card-header chat text-white">Chat</div>
-                    <div class="card-body" id="chat-messages">
-                        <!-- Chat messages will be displayed here -->
-                        <!-- Example messages -->
-                        <div *ngFor="let project of messages" class="color-chat alert alert-info mt-2">
-                                <div class="name-chat">
-                <p class="title">
-                
-                    {{project?.reciverName}}
-                </p>
-               
-            </div>
-                            <div class="message-chat">   
-                            {{project?.massege}}
+             
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<div class="container">
+<div class="row clearfix">
+    <div class="col-lg-12">
+        <div class="card chat-app">
+       
+            <div class="chat">
+                <div class="chat-header clearfix">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <a  *ngIf="messagge?.freelance !== 'yes'" href="javascript:void(0);" data-toggle="modal" data-target="#view_info">
+                                <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="avatar">
+                            </a>
+                            <div class="chat-about" >
+<!-- If message?.freelance is not 'yes', show name from acceptoffer?.offers?.freelance?.person -->
+<h6 *ngIf="messagge?.freelance !== 'yes'" class="m-b-0">
+  {{ acceptoffer?.offers?.freelance?.person?.firstName }}
+</h6>
+
+<!-- If message?.freelance is 'yes', show name from acceptoffer?.offers?.project?.person -->
+<h6 *ngIf="messagge?.freelance === 'yes'" class="m-b-0">
+  {{ acceptoffer?.offers?.project?.person?.firstName }}
+</h6>
+
+                                <small> {{ acceptoffer?.offers?.freelance?.skills }}</small>
                             </div>
                         </div>
-
-
-                 
+            
                     </div>
-                    
-         <form (ngSubmit)="onFormSubmit()">
-                    <div class="card-footer">
-                        <input type="text" class="form-control"  placeholder="Type your message..."   [(ngModel)]="message.massege">
-                        <button type="submit" class="btn btn-primary chat btn-block mt-3" id="send-button">Send</button>
-                    </div>
-         </form>
                 </div>
-        
-           
+                <div class="chat-history">
+  <ul class="m-b-0">
+    <ng-container *ngFor="let project of messages">
+      <li class="clearfix">
+        <ng-container *ngIf="person.id === project.senderId">
+          <!-- Sender's message -->
+          <div class="message-data text-right">
+            <!-- Display any sender-related information here if needed -->
+          </div>
+          <div class="chat-message">
+            <div class="message other-message float-right">{{ project.massege }}</div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="person.id !== project.senderId">
+          <!-- Receiver's message -->
+          <div class="message my-message">{{ project.massege }}</div>
+        </ng-container>
+      </li>
+    </ng-container>
+  </ul>
+</div>
+
+                <div class="chat-message clearfix">
+                    <form (ngSubmit)="PostMessage(massege)">
+                    <div class="input-group mb-0">
+                        
+                        <input class="form-control" [(ngModel)]="massege" name="inputValue" type="text" placeholder="Enter your message">   
+  <button type="submit" class="btn btn-primary chat btn-block mt-3">Submit</button>
+                    </div>
+                    </form>
+
+  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
        
 
 </div>
@@ -125,6 +133,10 @@
     </div>
    </div>
 </div>
+
+
+
+
 
 </div>
 </section>

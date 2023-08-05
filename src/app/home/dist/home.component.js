@@ -12,7 +12,7 @@ var HomeComponent = /** @class */ (function () {
     function HomeComponent() {
         this.sections = [
             {
-                title: 'Welcome To Kafiil',
+                title: 'Welcome To Wazaf',
                 description: 'Get Your Business Done Online By The Best Professional Freelancers Easily And Safely For All Parties',
                 image: '/assets/images/home.svg'
             },

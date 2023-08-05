@@ -6,10 +6,20 @@
           <p>Complete Your Account Info</p>
         </div>
         <hr>
-        <div class="Avatar">
-          <img src="assets/images/register.svg">
-          <p>Change Profile</p>
-        </div>
+<!-- Hidden file input -->
+<input type="file" id="avatar_uploader" style="display: none;" (change)="onImageSelected($event)">
+
+<!-- Avatar viewer with text to trigger the file input -->
+<!-- Hidden file input -->
+<input type="file" id="avatar_uploader" style="display: none;" (change)="onImageSelected($event)">
+
+<!-- Avatar viewer with text to trigger the file input -->
+<label for="avatar_uploader" class="Avatar">
+  <img [src]="imageSrc || 'assets/images/profile.png'">
+  <p>Change Profile</p>
+</label>
+
+
 
         <!-- Add the (change) event on the file input element -->
         <form (ngSubmit)="CompleteMyProfile()">
@@ -20,7 +30,7 @@
           <input type="text" class="input-text" name="specialty" [(ngModel)]="complete.portfolio">
 
           <!-- Add the (change) event on the file input element -->
-          <input type="file" (change)="onImageSelected($event)">
+         
 
           <div>
             <button type="submit" class="theme-btn primary-btn buttonlog">It's done</button>

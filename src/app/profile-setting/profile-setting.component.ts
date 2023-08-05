@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AuthServicesService } from '../services/auth-services.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { GetImage } from '../modules/GetImage.module';
+import { AddImage } from '../modules/AddImge.module';
 @Component({
   selector: 'app-profile-setting',
   templateUrl: './profile-setting.component.html',
@@ -12,6 +13,7 @@ import { GetImage } from '../modules/GetImage.module';
 })
 export class ProfileSettingComponent {
   person: Person = new Person();
+      image: AddImage = new AddImage();
   updatedPerson: Person = new Person();
   getImage: GetImage = new GetImage();
     public imageSrc: string | undefined;
@@ -57,6 +59,27 @@ export class ProfileSettingComponent {
 
     
       }
+  
+      onImageSelected(event: any) {
+    this.image.imageUrl = event.target.files[0];
+    this.AddImage();
+  }
+      AddImage():void {
+    this.authService.UpdateImage(this.image).subscribe(
+    () => {
+        console.log(`Image  updated successfully.`);
+        this.GetImage();
+   
+   
+    },
+      (error: any) => {
+        console.log(error);
+      console.log(`Error  }: ${error}`);
+    }
+  );
+
+    
+}
      GetImage() {
   this.authService.GetImage().subscribe(
     (result: any) => {

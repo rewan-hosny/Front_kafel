@@ -62,8 +62,8 @@
 }
 
 .custom-radio input:checked~i {
-    border-color: #1dbf73;
-    background-color: #1dbf73;
+    border-color: #0A6EBD;
+    background-color: #0A6EBD;
 }
 /*latest*/
 
@@ -145,7 +145,7 @@
 }
 .right .name .tag {
     padding: 1px 8px;
-   background-color: #1dbf73!important;
+   background-color: #0A6EBD!important;
     font-size: 10px;
     color: #fff;
     border-radius: 3px;
@@ -193,7 +193,7 @@ margin-right: 10px;
 }
 .theme-btn.primary-btn {
     color: #fff;
-    background-color: #1dbf73;
+    background-color: #0A6EBD;
 }
 /*search*/
 
@@ -224,8 +224,8 @@ margin-right: 10px;
 }
 
 .side-search:hover{
-    color: #1dbf73;
-    border: 1px solid  #1dbf73;
+    color: #0A6EBD;
+    border: 1px solid  #0A6EBD;
 }
 .but {
     font-size: 18px;
@@ -307,4 +307,7 @@ width: 100%;
     font-weight: 600;
  overflow: visible;
 
+}
+.link.apply-filter.category-filter:hover {
+  color: rgb(90, 150, 227); /* Change to your desired hover color */
 }

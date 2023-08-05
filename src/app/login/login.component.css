@@ -75,8 +75,8 @@
 }
 .custom-log-check input:checked~i {
     color: #fff;
-    background-color: #1dbf73;
-    border-color: #1dbf73;
+    background-color: #0A6EBD;
+    border-color: #0A6EBD;
 }
 .check-row>a {
     font-size: 12px;
@@ -89,11 +89,11 @@
 .buttonlog
 {
   display: inline-block;
-  border: 2px solid #1dbf73;
+  border: 2px solid #0A6EBD;
   border-radius: 4px;
   font-size: 15px;
   text-decoration: none;
-  background-color: #1dbf73;
+  background-color: #0A6EBD;
   padding-top:10px;
   padding-bottom: 10px;
 
@@ -116,7 +116,7 @@
 }
 .register a{
     text-decoration: none!important;
-    color: #1dbf73;
+    color: #0A6EBD;
 }
 /*the error message */
 .error{

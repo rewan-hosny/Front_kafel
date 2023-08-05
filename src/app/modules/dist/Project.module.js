@@ -5,6 +5,7 @@ var Project = /** @class */ (function () {
         this.id = 0;
         this.description = '';
         this.fromPrice = 0;
+        this.personId = 0;
         this.toPrice = 0;
         this.dueDate = '';
         this.statues = 0;

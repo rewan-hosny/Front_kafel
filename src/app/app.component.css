@@ -2,7 +2,7 @@ body {
     font-family: font,sans-serif,"font awesome 5 free";
     overflow-x: hidden;
     color: #202020;
-    background-color: #f1f2f2;
+    background-color:#E7CEA6;
     background-size: cover;
   background-repeat: repeat;
   background-attachment: fixed;
@@ -20,27 +20,27 @@ body {
   margin-left: auto;
 }
 .logo {
-  max-width: 80px; /* Adjust the value to your desired width */
+  max-width: 110px; /* Adjust the value to your desired width */
   height: auto; /* Maintain the aspect ratio */
 }
 /*button register new account*/
 
 .button1 {
   display: inline-block;
-  border: 2px solid #1dbf73;
+  border: 2px solid #0A6EBD;
   border-radius: 4px;
   font-size: 15px;
   text-decoration: none;
-  background-color: #1dbf73;
+  background-color: #0A6EBD;
 
    color: #fff;
 
 }
 
 .button1:hover {
-background-color: #158350;
+background-color: #A1C2F1;
   color: #fff;
-   border: 2px solid #158350;
+   border: 2px solid #A1C2F1;
 }
 
 /*button register login*/
@@ -59,5 +59,5 @@ background-color: #158350;
 
 .button2:hover {
   background-color: #fff;
-  color: #158350;
+  color: #E7CEA6;
 }

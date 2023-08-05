@@ -17,8 +17,11 @@ export class OfferServicesService {
   private GetCategory = "Offer/allCategory";
   private Accept = "Offer/AcceptProject";
   private PostMessage = "Message/Message";
+    private GetFreelance = "Project/GetFreelance";
+
   
-  
+  reciverId: number = 0;
+   massege: string = '';
   
     constructor(private http: HttpClient, private jwtHelper: JwtHelperService, private localStorage: LocalStorageService, private router: Router) { }
 
@@ -34,6 +37,21 @@ export class OfferServicesService {
      `${environment.apiUrl}/${this.Offer}/${id}`,httpOptions
     );
     }
+  
+   GetIfFreelance( ) {
+          const token = localStorage.getItem('Authorization');
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      })
+    };
+    return this.http.get(
+     `${environment.apiUrl}/${this.GetFreelance}`,httpOptions
+    );
+   }
+  
+  
   CreateOffer(Offer: CreateOffer, id: number): Observable<any> {
         const token = localStorage.getItem('Authorization');
     const httpOptions = {
@@ -92,7 +110,7 @@ export class OfferServicesService {
     return this.http.post(`${environment.apiUrl}/${this.Accept}/${id}`, {},httpOptions);
     }
   
-   PotsMessage(message: Message, id: number): Observable<any> {
+   PotsMessage(massege: string,reciverId :number, id: number): Observable<any> {
         const token = localStorage.getItem('Authorization');
     const httpOptions = {
       headers: new HttpHeaders({
@@ -100,7 +118,7 @@ export class OfferServicesService {
         'Content-Type': 'application/json'
       })
     };
-    return this.http.post(`${environment.apiUrl}/${this.PostMessage}/${id}`, message,httpOptions);
+    return this.http.post(`${environment.apiUrl}/${this.PostMessage}/${id}`, {massege,reciverId},httpOptions);
   }
   
 

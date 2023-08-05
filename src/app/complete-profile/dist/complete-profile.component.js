@@ -9,6 +9,7 @@ exports.__esModule = true;
 var core_1 = require("@angular/core");
 var CompleteProfile_module_1 = require("../modules/CompleteProfile.module");
 var AddImge_module_1 = require("../modules/AddImge.module");
+var GetImage_module_1 = require("../modules/GetImage.module");
 var CompleteProfileComponent = /** @class */ (function () {
     function CompleteProfileComponent(http, router, authService) {
         this.http = http;
@@ -16,7 +17,11 @@ var CompleteProfileComponent = /** @class */ (function () {
         this.authService = authService;
         this.complete = new CompleteProfile_module_1.CompleteMyProfile();
         this.image = new AddImge_module_1.AddImage();
+        this.getImage = new GetImage_module_1.GetImage();
     }
+    CompleteProfileComponent.prototype.ngOnInit = function () {
+        this.GetImage();
+    };
     CompleteProfileComponent.prototype.CompleteMyProfile = function () {
         var _this = this;
         this.authService.CompleteProfile(this.complete).subscribe(function () {
@@ -37,6 +42,15 @@ var CompleteProfileComponent = /** @class */ (function () {
         }, function (error) {
             console.log(error);
             console.log("Error  }: " + error);
+        });
+    };
+    CompleteProfileComponent.prototype.GetImage = function () {
+        var _this = this;
+        this.authService.GetImage().subscribe(function (result) {
+            _this.getImage = result;
+            _this.imageSrc = "data:image/jpeg;base64," + _this.getImage.imageUrl;
+        }, function (error) {
+            console.log(error);
         });
     };
     CompleteProfileComponent = __decorate([

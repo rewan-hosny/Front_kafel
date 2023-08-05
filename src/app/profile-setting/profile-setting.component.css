@@ -27,7 +27,7 @@
 
 .theme-btn.primary-btn {
     color: #fff;
-    background-color: #1dbf73;
+    background-color: #0A6EBD;
     text-decoration: none!important;
     padding: 8px;
     border-radius: 8px;
@@ -72,12 +72,12 @@
     font-size: 22px;
 }
 .green {
-    color: #1dbf73;
+    color: #0A6EBD;
 }
 
 .theme-btn.primary-btn {
     color: #fff;
-    background-color: #1dbf73;
+    background-color: #0A6EBD;
 }
 
 .theme-btn.sm-btn {
@@ -128,7 +128,7 @@
 }
 .progress-box .track .bar {
     height: 100%;
-    background-color: #1dbf73;
+    background-color: #0A6EBD;
     border-radius: 4px;
     width: 0%;
 }
@@ -200,7 +200,7 @@
     border-radius: 50%;
 }
 .user-info-column .img.marked svg circle {
-    stroke: #1dbf73;
+    stroke: #0A6EBD;
 }
 
 .user-info-column .img.marked svg circle {
@@ -241,11 +241,11 @@
     width: 9px;
     height: 9px;
     border-radius: 50%;
-    background-color: #1dbf73;
+    background-color: #0A6EBD;
 }
 
 .theme-color {
-    color: #1dbf73 !important;
+    color: #0A6EBD !important;
     margin-bottom: 10px;
 }
 .user-info-column .stars {
@@ -280,7 +280,7 @@
     border-radius: 10px;
     z-index: 5;
     font-size: 13px;
-    background-color: #1DBF73;
+    background-color: #0A6EBD;
     color: white;
     padding: 1px 8px;
 }
@@ -303,7 +303,7 @@
 }
 
 .theme-anchor {
-    color: #1DBF73;
+    color: #0A6EBD;
     text-decoration: none!important;
 }
 
@@ -314,7 +314,7 @@
     margin-right: 5px;
 }
 input[type=radio] {
-    accent-color: #1DBF73;
+    accent-color: #0A6EBD;
 }
 
 input[type=checkbox], input[type=radio] {
@@ -340,8 +340,8 @@ input[type=checkbox], input[type=radio] {
     
 }
 .custom-radio input:checked~i {
-    border-color: #1dbf73;
-    background-color: #1dbf73;
+    border-color: #0A6EBD;
+    background-color: #0A6EBD;
 }
 .checkbox-row {
     display: flex;
@@ -351,7 +351,7 @@ input[type=checkbox], input[type=radio] {
 
 .theme-btn.primary-btn {
     color: #fff;
-    background-color: #1dbf73;
+    background-color: #0A6EBD;
     border:none;
     border-radius: 8px;
     margin-top:20px;

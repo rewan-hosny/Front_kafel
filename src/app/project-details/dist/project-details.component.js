@@ -9,13 +9,18 @@ exports.__esModule = true;
 var core_1 = require("@angular/core");
 var Project_module_1 = require("../modules/Project.module");
 var CreateOffer_module_1 = require("../modules/CreateOffer.module");
+var person_module_1 = require("../modules/person/person.module");
+var acceptedOffer_module_1 = require("../modules/acceptedOffer.module");
 var ProjectDetailsComponent = /** @class */ (function () {
-    function ProjectDetailsComponent(http, router, projectService, offerService, route) {
+    function ProjectDetailsComponent(http, authService, router, projectService, offerService, route) {
         this.http = http;
+        this.authService = authService;
         this.router = router;
         this.projectService = projectService;
         this.offerService = offerService;
         this.route = route;
+        this.person = new person_module_1.Person();
+        this.acceptoffer = new acceptedOffer_module_1.AcceptedOffer();
         this.projectDetails = new Project_module_1.Project();
         this.console = console;
         this.OfferDetails = [];
@@ -35,6 +40,17 @@ var ProjectDetailsComponent = /** @class */ (function () {
             }
             _this.getProjectDetails();
             _this.getOfferDetails();
+            _this.PersonData();
+            _this.getIfFreelance();
+            _this.GetAcceptedOffer();
+        });
+    };
+    ProjectDetailsComponent.prototype.GetAcceptedOffer = function () {
+        var _this = this;
+        this.offerService.GetAcceptProject(this.projectId).subscribe(function (result) {
+            _this.acceptoffer = result;
+        }, function (error) {
+            console.log(error);
         });
     };
     ProjectDetailsComponent.prototype.hideBidSection = function () {
@@ -57,6 +73,19 @@ var ProjectDetailsComponent = /** @class */ (function () {
             // You can now use 'this.projectDetails' to display the project details on your template
         }, function (error) {
             // Handle the error if the API call fails
+            console.error('Error fetching project details:', error);
+        });
+    };
+    ProjectDetailsComponent.prototype.getIfFreelance = function () {
+        var _this = this;
+        this.offerService.GetIfFreelance().subscribe(function (data) {
+            // Handle the response, here 'data' contains the project details
+            _this.messagge = data;
+            console.log(_this.messagge);
+            // You can now use 'this.projectDetails' to display the project details on your template
+        }, function (error) {
+            // Handle the error if the API call fails
+            console.log(_this.messagge.freelance);
             console.error('Error fetching project details:', error);
         });
     };
@@ -89,6 +118,14 @@ var ProjectDetailsComponent = /** @class */ (function () {
             console.error('Error fetching project details:', error);
         });
     };
+    ProjectDetailsComponent.prototype.PersonData = function () {
+        var _this = this;
+        this.authService.GetUser().subscribe(function (result) {
+            _this.person = result;
+        }, function (error) {
+            console.log(error);
+        });
+    };
     ProjectDetailsComponent.prototype.AcceptOffer = function (id) {
         var _this = this;
         this.offerService.AcceptProject(id).subscribe(function (response) {
@@ -107,7 +144,7 @@ var ProjectDetailsComponent = /** @class */ (function () {
         });
     };
     ProjectDetailsComponent.prototype.viewProjectDetails = function (id) {
-        this.router.navigate(['/project-details', id]);
+        this.router.navigate(['/manageProject', id]);
     };
     ProjectDetailsComponent = __decorate([
         core_1.Component({

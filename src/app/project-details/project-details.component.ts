@@ -7,6 +7,9 @@ import { ActivatedRoute } from '@angular/router';
 import { Project } from '../modules/Project.module';
 import { Offer } from '../modules/Offers.module';
 import { CreateOffer } from '../modules/CreateOffer.module';
+import { AuthServicesService } from '../services/auth-services.service';
+import { Person } from '../modules/person/person.module';
+import { AcceptedOffer } from '../modules/acceptedOffer.module';
 
 
 @Component({
@@ -16,14 +19,17 @@ import { CreateOffer } from '../modules/CreateOffer.module';
 })
 export class ProjectDetailsComponent {
   projectId!: number;
+  person: Person = new Person();
+    acceptoffer: AcceptedOffer = new AcceptedOffer();
   id!: number; // Property to store the project ID
   projectDetails:Project= new Project();
-     console = console;
+  console = console;
+   messagge:any; 
   OfferDetails: Offer[] = [];
     acceptanceStatus: string | null = null; 
    createOffer: CreateOffer = new CreateOffer(); // Initialize createOffer with a new instance of CreateOffer
 showBidSection: boolean = true;
-  constructor(private http: HttpClient,  private router: Router, private projectService: ProjectServicesService,private offerService:OfferServicesService , private route: ActivatedRoute,) { }
+  constructor(private http: HttpClient, private authService: AuthServicesService,private router: Router, private projectService: ProjectServicesService,private offerService:OfferServicesService , private route: ActivatedRoute,) { }
  ngOnInit(): void {
   // Retrieve the project ID from the route parameter
   this.route.params.subscribe(params => {
@@ -38,9 +44,23 @@ showBidSection: boolean = true;
 
     this.getProjectDetails();
     this.getOfferDetails();
+    this.PersonData();
+    this.getIfFreelance();
+     this.GetAcceptedOffer();
   });
 }
-
+ GetAcceptedOffer() {
+    this.offerService.GetAcceptProject(this.projectId).subscribe(
+      (result: any) => {
+        this.acceptoffer = result;
+  
+      },
+      (error: any) => {
+        console.log(error);
+      }
+    );
+ }
+  
 hideBidSection() {
   this.showBidSection = false;
   // Save the 'showBidSection' value to browser storage when it changes
@@ -67,7 +87,22 @@ toggleBidSection() {
         console.error('Error fetching project details:', error);
       });
 }
-
+  getIfFreelance(){
+  
+    this.offerService.GetIfFreelance().subscribe(
+      (data: any) => {
+        // Handle the response, here 'data' contains the project details
+        this.messagge = data;
+        console.log(this.messagge)
+        // You can now use 'this.projectDetails' to display the project details on your template
+      },
+      error => {
+        // Handle the error if the API call fails
+   
+            console.log(this.messagge.freelance)
+        console.error('Error fetching project details:', error);
+      });
+  }
   CreateOffers():void {
     this.offerService.CreateOffer(this.createOffer,this.projectId).subscribe(
     () => {
@@ -82,6 +117,7 @@ toggleBidSection() {
 
     
   }
+  
     getSafeImageUrl(base64String: string | undefined): string {
   if (base64String) {
     return 'data:image/jpeg;base64,' + base64String;
@@ -103,6 +139,17 @@ toggleBidSection() {
         console.error('Error fetching project details:', error);
       });
   }
+   
+  PersonData() {
+    this.authService.GetUser().subscribe(
+      (result: any) => {
+        this.person = result;
+      },
+      (error: any) => {
+        console.log(error);
+      }
+    );
+  }
 
     AcceptOffer(id: number): void {
     this.offerService.AcceptProject(id).subscribe(
@@ -123,7 +170,7 @@ toggleBidSection() {
     );
     }
     viewProjectDetails(id: number) {
-    this.router.navigate(['/project-details', id]);
+    this.router.navigate(['/manageProject', id]);
   }
 
 

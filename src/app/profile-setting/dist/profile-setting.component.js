@@ -9,6 +9,7 @@ exports.__esModule = true;
 var core_1 = require("@angular/core");
 var person_module_1 = require("../modules/person/person.module");
 var GetImage_module_1 = require("../modules/GetImage.module");
+var AddImge_module_1 = require("../modules/AddImge.module");
 var ProfileSettingComponent = /** @class */ (function () {
     function ProfileSettingComponent(http, router, authService, jwtHelper) {
         this.http = http;
@@ -16,6 +17,7 @@ var ProfileSettingComponent = /** @class */ (function () {
         this.authService = authService;
         this.jwtHelper = jwtHelper;
         this.person = new person_module_1.Person();
+        this.image = new AddImge_module_1.AddImage();
         this.updatedPerson = new person_module_1.Person();
         this.getImage = new GetImage_module_1.GetImage();
     }
@@ -43,6 +45,20 @@ var ProfileSettingComponent = /** @class */ (function () {
             localStorage.setItem('name', decodedToken["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"]);
             localStorage.setItem('userid', decodedToken["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"]);
             _this.router.navigate(['/home']);
+        }, function (error) {
+            console.log(error);
+            console.log("Error  }: " + error);
+        });
+    };
+    ProfileSettingComponent.prototype.onImageSelected = function (event) {
+        this.image.imageUrl = event.target.files[0];
+        this.AddImage();
+    };
+    ProfileSettingComponent.prototype.AddImage = function () {
+        var _this = this;
+        this.authService.UpdateImage(this.image).subscribe(function () {
+            console.log("Image  updated successfully.");
+            _this.GetImage();
         }, function (error) {
             console.log(error);
             console.log("Error  }: " + error);

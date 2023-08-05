@@ -24,6 +24,8 @@ var ManageProjectComponent = /** @class */ (function () {
         this.acceptoffer = new acceptedOffer_module_1.AcceptedOffer();
         this.getImage = new GetImage_module_1.GetImage();
         this.messages = [];
+        this.massege = '';
+        this.reciverId = 0;
     }
     ManageProjectComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -33,6 +35,7 @@ var ManageProjectComponent = /** @class */ (function () {
             _this.projectId = +params['id']; // Assuming the route parameter name is 'id'
             _this.GetAcceptedOffer();
             _this.GetMessages();
+            _this.getIfFreelance();
         });
     };
     ManageProjectComponent.prototype.calculateReceiverId = function () {
@@ -47,14 +50,24 @@ var ManageProjectComponent = /** @class */ (function () {
     ManageProjectComponent.prototype.calculateReceiverName = function () {
         var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o;
         if (((_d = (_c = (_b = (_a = this.acceptoffer) === null || _a === void 0 ? void 0 : _a.offers) === null || _b === void 0 ? void 0 : _b.freelance) === null || _c === void 0 ? void 0 : _c.person) === null || _d === void 0 ? void 0 : _d.id) === ((_e = this.person) === null || _e === void 0 ? void 0 : _e.id)) {
-            return ((_j = (_h = (_g = (_f = this.acceptoffer) === null || _f === void 0 ? void 0 : _f.offers) === null || _g === void 0 ? void 0 : _g.project) === null || _h === void 0 ? void 0 : _h.person) === null || _j === void 0 ? void 0 : _j.firstName) || 'Unknown';
+            return ((_j = (_h = (_g = (_f = this.acceptoffer) === null || _f === void 0 ? void 0 : _f.offers) === null || _g === void 0 ? void 0 : _g.freelance) === null || _h === void 0 ? void 0 : _h.person) === null || _j === void 0 ? void 0 : _j.firstName) || 'Unknown';
         }
         else {
-            return ((_o = (_m = (_l = (_k = this.acceptoffer) === null || _k === void 0 ? void 0 : _k.offers) === null || _l === void 0 ? void 0 : _l.freelance) === null || _m === void 0 ? void 0 : _m.person) === null || _o === void 0 ? void 0 : _o.firstName) || 'Unknown';
+            return ((_o = (_m = (_l = (_k = this.acceptoffer) === null || _k === void 0 ? void 0 : _k.offers) === null || _l === void 0 ? void 0 : _l.project) === null || _m === void 0 ? void 0 : _m.person) === null || _o === void 0 ? void 0 : _o.firstName) || 'Unknown';
         }
     };
-    ManageProjectComponent.prototype.onFormSubmit = function () {
-        this.PostMessage(this.message);
+    ManageProjectComponent.prototype.getIfFreelance = function () {
+        var _this = this;
+        this.offerService.GetIfFreelance().subscribe(function (data) {
+            // Handle the response, here 'data' contains the project details
+            _this.messagge = data;
+            console.log(_this.messagge);
+            // You can now use 'this.projectDetails' to display the project details on your template
+        }, function (error) {
+            // Handle the error if the API call fails
+            console.log(_this.messagge.freelance);
+            console.error('Error fetching project details:', error);
+        });
     };
     ManageProjectComponent.prototype.PersonData = function () {
         var _this = this;
@@ -89,12 +102,19 @@ var ManageProjectComponent = /** @class */ (function () {
             console.log(error);
         });
     };
-    ManageProjectComponent.prototype.PostMessage = function (message) {
+    ManageProjectComponent.prototype.submitForm = function () {
+        // Call the Rewan function and pass the inputValue as an argument
+        this.Rewan(this.massege);
+    };
+    ManageProjectComponent.prototype.Rewan = function (e) {
+        this.PostMessage(e);
+        console.log(e);
+    };
+    ManageProjectComponent.prototype.PostMessage = function (e) {
         var _this = this;
-        message.massege = "bay ";
-        this.message.reciverName = this.calculateReceiverName();
-        this.message.reciverId = this.calculateReceiverId();
-        this.offerService.PotsMessage(this.message, this.projectId).subscribe(function () {
+        this.massege = e;
+        this.reciverId = this.calculateReceiverId();
+        this.offerService.PotsMessage(this.massege, this.reciverId, this.projectId).subscribe(function () {
             console.log("message send successfully.");
             _this.GetMessages();
         }, function (error) {

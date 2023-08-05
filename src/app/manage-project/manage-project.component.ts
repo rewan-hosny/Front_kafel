@@ -21,8 +21,12 @@ export class ManageProjectComponent {
   message: Message = new Message();
   acceptoffer: AcceptedOffer = new AcceptedOffer();
   getImage: GetImage = new GetImage();
-    messages: Message[] = [];
-    projectId!: number;
+  messages: Message[] = [];
+  massege: string = '';
+  reciverId: number = 0;
+     messagge:any; 
+
+projectId!: number;
   public imageSrc: string | undefined;
   constructor(private http: HttpClient, private router: Router,private route: ActivatedRoute, private authService: AuthServicesService, private offerService: OfferServicesService, private jwtHelper: JwtHelperService) { }
   ngOnInit(): void {
@@ -32,6 +36,7 @@ export class ManageProjectComponent {
     this.projectId = +params['id']; // Assuming the route parameter name is 'id'
        this.GetAcceptedOffer();
        this.GetMessages();
+       this.getIfFreelance();
 
    
   });
@@ -45,15 +50,28 @@ calculateReceiverId(): number {
 }
   calculateReceiverName(): string {
   if (this.acceptoffer?.offers?.freelance?.person?.id === this.person?.id) {
-    return this.acceptoffer?.offers?.project?.person?.firstName || 'Unknown';
+    return  this.acceptoffer?.offers?.freelance?.person?.firstName || 'Unknown';
   } else {
-    return this.acceptoffer?.offers?.freelance?.person?.firstName || 'Unknown';
+    return this.acceptoffer?.offers?.project?.person?.firstName || 'Unknown';
   }
 }
 
-  onFormSubmit() {
-  this.PostMessage(this.message);
-}
+  getIfFreelance(){
+  
+    this.offerService.GetIfFreelance().subscribe(
+      (data: any) => {
+        // Handle the response, here 'data' contains the project details
+        this.messagge = data;
+        console.log(this.messagge)
+        // You can now use 'this.projectDetails' to display the project details on your template
+      },
+      error => {
+        // Handle the error if the API call fails
+   
+            console.log(this.messagge.freelance)
+        console.error('Error fetching project details:', error);
+      });
+  }
  
   PersonData() {
     this.authService.GetUser().subscribe(
@@ -98,13 +116,20 @@ calculateReceiverId(): number {
         console.log(error);
       }
     );
+ }
+   submitForm() {
+    // Call the Rewan function and pass the inputValue as an argument
+    this.Rewan(this.massege);
   }
 
-  PostMessage(message:Message) {
-    message.massege = "bay ";
-    this.message.reciverName = this.calculateReceiverName();
-     this.message.reciverId = this.calculateReceiverId();
-    this.offerService.PotsMessage(this.message, this.projectId).subscribe(
+  Rewan(e: string) {
+    this.PostMessage(e);
+    console.log(e);
+}
+  PostMessage(e:string) {
+    this.massege = e;
+     this.reciverId = this.calculateReceiverId();
+    this.offerService.PotsMessage(this.massege,this.reciverId, this.projectId).subscribe(
       () => {
         console.log(`message send successfully.`);
         this.GetMessages();

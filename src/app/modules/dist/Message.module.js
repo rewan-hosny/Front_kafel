@@ -3,9 +3,10 @@ exports.__esModule = true;
 var Message = /** @class */ (function () {
     function Message() {
         this.massege = '';
+        this.reciverName = '';
+        this.senderName = '';
         this.reciverId = 0;
         this.senderId = 0;
-        this.reciverName = '';
     }
     return Message;
 }());

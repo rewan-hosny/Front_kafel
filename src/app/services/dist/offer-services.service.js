@@ -19,6 +19,9 @@ var OfferServicesService = /** @class */ (function () {
         this.GetCategory = "Offer/allCategory";
         this.Accept = "Offer/AcceptProject";
         this.PostMessage = "Message/Message";
+        this.GetFreelance = "Project/GetFreelance";
+        this.reciverId = 0;
+        this.massege = '';
     }
     OfferServicesService.prototype.GetOffer = function (id) {
         var token = localStorage.getItem('Authorization');
@@ -29,6 +32,16 @@ var OfferServicesService = /** @class */ (function () {
             })
         };
         return this.http.get(environment_1.environment.apiUrl + "/" + this.Offer + "/" + id, httpOptions);
+    };
+    OfferServicesService.prototype.GetIfFreelance = function () {
+        var token = localStorage.getItem('Authorization');
+        var httpOptions = {
+            headers: new http_1.HttpHeaders({
+                'Authorization': "Bearer " + token,
+                'Content-Type': 'application/json'
+            })
+        };
+        return this.http.get(environment_1.environment.apiUrl + "/" + this.GetFreelance, httpOptions);
     };
     OfferServicesService.prototype.CreateOffer = function (Offer, id) {
         var token = localStorage.getItem('Authorization');
@@ -73,7 +86,7 @@ var OfferServicesService = /** @class */ (function () {
         };
         return this.http.post(environment_1.environment.apiUrl + "/" + this.Accept + "/" + id, {}, httpOptions);
     };
-    OfferServicesService.prototype.PotsMessage = function (message, id) {
+    OfferServicesService.prototype.PotsMessage = function (massege, reciverId, id) {
         var token = localStorage.getItem('Authorization');
         var httpOptions = {
             headers: new http_1.HttpHeaders({
@@ -81,7 +94,7 @@ var OfferServicesService = /** @class */ (function () {
                 'Content-Type': 'application/json'
             })
         };
-        return this.http.post(environment_1.environment.apiUrl + "/" + this.PostMessage + "/" + id, message, httpOptions);
+        return this.http.post(environment_1.environment.apiUrl + "/" + this.PostMessage + "/" + id, { massege: massege, reciverId: reciverId }, httpOptions);
     };
     OfferServicesService = __decorate([
         core_1.Injectable({

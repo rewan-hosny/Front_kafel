@@ -25,7 +25,6 @@ export class AuthServicesService {
   private UpdatePerson = "Auth/UpdateUser";
   private getImage = "Auth/Image";
 
-
   constructor(private http: HttpClient, private jwtHelper: JwtHelperService, private localStorage: LocalStorageService, private router: Router) { }
   register(person: Person): Observable<any> {
      return this.http.post(`${environment.apiUrl}/${this.registerr}`, person).pipe(

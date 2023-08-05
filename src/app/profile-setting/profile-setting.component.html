@@ -77,13 +77,15 @@ Setting </p>
 <form    (ngSubmit)="UpdatePerson()" class="has-padding" action="https://kafiil.com/users/update-my-profile" method="post" abineguid="F699C5F19EAC45EA9B5D0A28CFEFFA7B">
 
 <div class="row">
-<input type="file" id="avatar_uploader" style="display: none;">
-<div id="avatar_viewer" style="margin:10px 0px; position:relative; width:110px; height: 110px; border-radius: 50%; background-size: cover; background-image:url(&quot;{{imageSrc}}&quot;)">
-<a id="change_avatar_button" href="#">Change Profile</a>
+<!-- Hidden file input -->
+<!-- Hidden file input -->
+<input type="file" id="avatar_uploader" style="display: none;" (change)="onImageSelected($event)">
 
-
-
+<!-- Avatar viewer with a link to trigger the file input -->
+<div id="avatar_viewer" style="margin: 10px 0px; position: relative; width: 110px; height: 110px; border-radius: 50%; background-size: cover; background-image: url(&quot;{{imageSrc}}&quot;)">
+  <label id="change_avatar_button" for="avatar_uploader" style="cursor: pointer;">Change Profile</label>
 </div>
+
 <div class="modal fade" id="change_avatar_modal" tabindex="-1" role="dialog" aria-labelledby="change_avatar_modalTitle" aria-hidden="true">
 <div class="modal-dialog modal-dialog-centered" role="document">
 <div class="modal-content">

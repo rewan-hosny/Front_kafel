@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthServicesService } from '../services/auth-services.service';
 import { CompleteMyProfile } from '../modules/CompleteProfile.module';
 import { AddImage } from '../modules/AddImge.module';
+import { GetImage } from '../modules/GetImage.module';
 
 @Component({
   selector: 'app-complete-profile',
@@ -13,9 +14,14 @@ import { AddImage } from '../modules/AddImge.module';
 export class CompleteProfileComponent {
   
   complete: CompleteMyProfile = new CompleteMyProfile();
-    image: AddImage = new AddImage();
+  image: AddImage = new AddImage();
+    getImage: GetImage = new GetImage();
+    public imageSrc: string | undefined;
 
-  constructor(private http: HttpClient,  private router: Router, private authService:AuthServicesService) { }
+  constructor(private http: HttpClient, private router: Router, private authService: AuthServicesService) { }
+  ngOnInit(): void {
+    this.GetImage();
+  }
 
 
     CompleteMyProfile():void {
@@ -54,5 +60,17 @@ export class CompleteProfileComponent {
   );
 
     
+      }
+       GetImage() {
+  this.authService.GetImage().subscribe(
+    (result: any) => {
+      this.getImage = result;
+       this.imageSrc = `data:image/jpeg;base64,${this.getImage.imageUrl}`;
+    },
+    (error: any) => {
+      console.log(error);
+    }
+  );
 }
+
 }
