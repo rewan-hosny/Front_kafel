@@ -61,3 +61,8 @@ background-color: #A1C2F1;
   background-color: #fff;
   color: #E7CEA6;
 }
+
+.app-container {
+    display: flex;
+    height: 100vh; /* Set an appropriate height */
+}

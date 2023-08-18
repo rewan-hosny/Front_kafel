@@ -3,7 +3,7 @@
 <div class="first-section">
        <div class="right">
 
-<a  class="imge">
+<a href="http://localhost:4200/profileSetting" class="imge">
 
 <img class="" [src]="'data:image/jpeg;base64,' + projectDetails.person?.imageUrl" alt="">
 
@@ -222,19 +222,7 @@ Bids </p>
         <div class="info">
         <p class="name">
         <a class="black-anchor" href="https://kafiil.com/u/mohamedkamal10">{{OfferDetail.freelance.person.firstName +" "+OfferDetail.freelance.person.lastName}}</a>
-        <span class="stars">
-        <i class="fas fa-star "></i>
-        <i class="fas fa-star "></i>
-        <i class="fas fa-star "></i>
-        <i class="fas fa-star "></i>
-        <i class="fas fa-star "></i>
-        </span>
-        <span class="small-text">
-        0.0
-        <span class="hint-text">
-        (0)
-        </span>
-        </span>
+     
         </p>
         <div class="date-time">
         <span class="date">
@@ -242,10 +230,7 @@ Bids </p>
 {{
     OfferDetail.freelance.skills
 }}        </span>
-        <span class="time">
-        <i class="fas fa-clock"></i>
-        5 hours ago
-        </span>
+ 
         </div>
         </div>
         </div>
@@ -370,7 +355,7 @@ Project Info </p>
 </div>
     
 </div>
-<div *ngIf="!showBidSection || messagge?.freelance === 'yes'">
+<div *ngIf="!showBidSection ">
   <button class="button" (click)="viewProjectDetails(projectDetails.id)">Manage Project</button>
 </div>
 

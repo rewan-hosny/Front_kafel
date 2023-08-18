@@ -80,7 +80,7 @@
 }
 .theme-btn.primary-btn {
     color: #fff;
-    background-color: #1dbf73;
+    background-color: #0A6EBD;
     border: none;
     padding: 10px;
     border-radius: 8px;
@@ -89,7 +89,7 @@
 
 
 .tips-content {
-    color: #666;
+    color: #0A6EBD;
      
 }
 p {
@@ -126,4 +126,8 @@ p{
 
 .budget-input-wrapper .budget-input-separator {
   margin: 0 5px;
+}
+
+h5{
+    color:#ffff;
 }
